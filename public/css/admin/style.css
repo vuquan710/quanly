@@ -1,0 +1,10 @@
+.admin-layout .form-login {
+    background-color: #fff;
+    padding: 20px;
+    border-top: 5px solid #33b5e5;
+    margin-top: 20px;
+}
+
+.admin-layout .pagination {
+    margin: 0;
+}

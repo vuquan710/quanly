@@ -1,0 +1,57 @@
+.padding-top-10 {
+    padding-top: 10px;
+}
+
+.padding-top-20 {
+    padding-top: 20px;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.margin-left-10 {
+    margin-left: 10px;
+}
+
+.inp-01 {
+    border-radius: 0;
+}
+
+.btn, .form-control, .alert, .dropdown-menu {
+    border-radius: 0;
+}
+
+.btn-red {
+    background: #e94d1c;
+    color: #fff;
+}
+
+.btn-green {
+    background: #44C464;
+    color: #fff;
+}
+
+.navbar-light {
+    background: #fff;
+    color: #000;
+    border-radius: 0;
+    border: none;
+}
+
+.font-14 {
+    font-size: 14px;
+}
+
+.height-50 {
+    height: 50px;
+}
+
