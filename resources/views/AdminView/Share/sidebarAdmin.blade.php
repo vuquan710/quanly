@@ -50,7 +50,7 @@
             <b class="arrow"></b>
             <ul class="submenu">
                 <li class="{{(strpos(\Route::current()->getName(), 'admin.products.index') !== false)?"active":"" }}">
-                    <a href="{{route('admin.products.index')}}">
+                    <a href="#">
                         <i class="menu-icon fa fa-caret-right"></i>
                         List Products
                     </a>
@@ -75,18 +75,59 @@
                 </li>
             </ul>
         </li>
-        <li class="{{(strpos(\Route::current()->getName(), 'admin.categories.') !== false)?"open active":"" }}">
+        <li class="{{(strpos(\Route::current()->getName(), 'admin.') !== false)?"open active":"" }}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-list-alt"></i>
-                <span class="menu-text">Categories</span>
+                <span class="menu-text">Quản Lý Học Viên</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
+
             <ul class="submenu">
-                <li class="{{(strpos(\Route::current()->getName(), 'admin.categories.index') !== false)?"active":"" }}">
-                    <a href="{{route('admin.categories.index')}}">
+                <li class="{{(strpos(\Route::current()->getName(), 'admin.new.index') !== false)?"active":"" }}">
+                    <a href="{!! route('admin.new.index') !!}">
                         <i class="menu-icon fa fa-caret-right"></i>
-                        List Categories
+                        Học Viên Đăng Ký Mới
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="{{(strpos(\Route::current()->getName(), 'admin.next.index') !== false)?"active":"" }}">
+                    <a href="{!! route('admin.next.index') !!}">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Học Viên Đăng Ký Tiếp
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="{{(strpos(\Route::current()->getName(), 'admin.test.index') !== false)?"active":"" }}">
+                    <a href="{!! route('admin.test.index') !!}">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Lớp Kiểm Tra Định Kỳ
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="{{(strpos(\Route::current()->getName(), 'admin.waiting.index') !== false)?"active":"" }}">
+                    <a href="{!! route('admin.waiting.index') !!}">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Danh Sách Chờ Xếp Lớp
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="{{(strpos(\Route::current()->getName(), 'admin.tutoring.index') !== false)?"active":"" }}">
+                    <a href="{!! route('admin.tutoring.index') !!}">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Danh Sách Phụ Đạo
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="{{(strpos(\Route::current()->getName(), 'admin.off.index') !== false)?"active":"" }}">
+                    <a href="{!! route('admin.off.index') !!}">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Danh Sách Học Viên Nghỉ
                     </a>
                     <b class="arrow"></b>
                 </li>

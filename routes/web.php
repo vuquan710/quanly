@@ -30,7 +30,6 @@ Route::middleware(['UserMiddleware'])
 
 //BackEnd route
 Route::prefix('admin')
-//domain(env('DOMAIN_ADMIN', 'admin.fashion-dev.com'))
     ->namespace('Admin')
     ->group(function () {
         Route::get('/', function () {
@@ -55,29 +54,42 @@ Route::prefix('admin')
                     ]
                 ]);
 
-                Route::resource('products', 'ProductsController', [
+                Route::resource('new', 'RegisterNewController', [
                     'names' => [
-                        'index' => 'admin.products.index',
-                        'show' => 'admin.products.show',
-                        'edit' => 'admin.products.edit',
+                        'index' => 'admin.new.index',
                     ]
                 ]);
-                Route::resource('categories', 'CategoriesController', [
+
+                Route::resource('next', 'RegisterNextController', [
                     'names' => [
-                        'index' => 'admin.categories.index',
-                        'show' => 'admin.categories.show',
-                        'edit' => 'admin.categories.edit',
-                        'create' => 'admin.categories.create',
+                        'index' => 'admin.next.index',
                     ]
                 ]);
-                Route::resource('orders', 'OrdersController', [
+
+                Route::resource('test', 'TestClassController', [
                     'names' => [
-                        'index' => 'admin.orders.index',
-                        'show' => 'admin.orders.show',
-                        'edit' => 'admin.orders.edit',
+                        'index' => 'admin.test.index',
                     ]
                 ]);
-                Route::match(['post'], 'orders/list-recent-order', ['as' => 'admin.orders.listRecentOrder', 'uses' => 'OrdersController@listRecentOrder']);
+
+                Route::resource('waiting', 'WaitingStudentController', [
+                    'names' => [
+                        'index' => 'admin.waiting.index',
+                    ]
+                ]);
+
+                Route::resource('tutoring', 'TutoringStudentController', [
+                    'names' => [
+                        'index' => 'admin.tutoring.index',
+                    ]
+                ]);
+
+                Route::resource('off', 'OffStudentController', [
+                    'names' => [
+                        'index' => 'admin.off.index',
+                    ]
+                ]);
+
             });
 
     });
