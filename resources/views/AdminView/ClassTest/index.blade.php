@@ -11,10 +11,6 @@
             @include('AdminView.Share.breadcrumbs')
             <div class="page-content">
                 <div class="row">
-                    {{--<div class="col-md-12 col-lg-12">--}}
-                    {{--Search--}}
-                    {{--<input name="email" type="text" class="margin-bottom-10" placeholder="Search name, email, phone,..."/><button class="btn btn-success btn-sm margin-left-10">Search</button>--}}
-                    {{--</div>--}}
                     <div class="col-md-12 col-lg-12">
                         <div class="pull-right tableTools-container">
                             <div class="dt-buttons btn-overlap btn-group">
@@ -49,97 +45,56 @@
                             <table id="simple-table" class="table  table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th class="center" width="1%">
-                                        <label class="pos-rel">
-                                            <input type="checkbox" class="ace">
-                                            <span class="lbl"></span>
-                                        </label>
-                                    </th>
                                     <th>STT</th>
-                                    <th>Họ Tên</th>
-                                    <th>Ngáy Sinh</th>
-                                    <th>Tên Phụ Huynh</th>
-                                    <th>Số Điện Thoại</th>
-                                    <th>Facebook</th>
-                                    <th>Khóa Học Hiện Tại</th>
-                                    <th>Lớp Học</th>
-                                    <th>Khóa Học Tiếp</th>
-                                    <th>Ngày Đăng Ký Thêm</th>
-                                    <th></th>
+                                    <th>Tên Lớp</th>
+                                    <th>Ngày Kiểm Tra</th>
+                                    <th>Thời Gian</th>
+                                    <th>Số Học Viên</th>
+                                    <th>
+                                        <a style="width: 100%" href="{!! route('admin.student.test.create') !!}"
+                                           class="btn btn-success btn-bold">
+                                    <span>
+                                        <i class=" icon-only ace-icon ace-icon fa fa-plus bigger-110"></i>
+                                    </span>
+                                        </a>
+                                    </th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
                                 @if($data->count()>0)
-                                    @foreach($data as $dt)
+                                    @foreach($data as $key=> $dt)
                                         <tr>
-                                            <td class="center" width="1%">
-                                                <label class="pos-rel">
-                                                    <input type="checkbox" class="ace">
-                                                    <span class="lbl"></span>
-                                                </label>
-                                            </td>
-                                            <td>{{$dt->Stt}}</td>
-                                            <td>{{$dt->Name}}</td>
-                                            <td>{{$dt->Bod}}</td>
-                                            <td>{{$dt->Parent}}</td>
-                                            <td>{{$dt->Phone}}</td>
-                                            <td>{{$dt->Facebook}}</td>
-                                            <td>{{$dt->Course}}</td>
+                                            <td>{{($key+1)+($data->currentPage()-1)*$data->perPage()}}</td>
                                             <td>{{$dt->ClassName}}</td>
-                                            <td>{{$dt->CourseNew}}</td>
-                                            <td>{{$dt->RegDateNew}}</td>
+                                            <td>{{$dt->RegDate}}</td>
+                                            @if($dt->Lecture == 1)
+                                                <td>9h30 - 11h00</td>
+                                            @elseif ($dt->Lecture == 1)
+                                                <td>17h30 - 19h00</td>
+                                            @else
+                                                <td>19h05 - 20h35</td>
+                                            @endif
+                                            <td>{{$dt->Status}}</td>
                                             <td>
                                                 <div class="hidden-sm hidden-xs btn-group">
-                                                    <button class="btn btn-xs btn-success">
-                                                        <i class="ace-icon fa fa-check bigger-120"></i>
-                                                    </button>
-
-                                                    <button class="btn btn-xs btn-info">
-                                                        <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                                    </button>
-
-                                                    <button class="btn btn-xs btn-danger">
-                                                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                    </button>
-
-                                                    <button class="btn btn-xs btn-warning">
-                                                        <i class="ace-icon fa fa-flag bigger-120"></i>
-                                                    </button>
-                                                </div>
-
-                                                <div class="hidden-md hidden-lg">
-                                                    <div class="inline pos-rel">
-                                                        <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                                            <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                                                    <a href="{!! route('admin.student.test.update',['id' => $dt->id]) !!}">
+                                                        <button class="btn btn-xs btn-info">
+                                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
                                                         </button>
+                                                    </a>
 
-                                                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                            <li>
-                                                                <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																			<span class="blue">
-																				<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																			</span>
-                                                                </a>
-                                                            </li>
-
-                                                            <li>
-                                                                <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																			<span class="green">
-																				<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																			</span>
-                                                                </a>
-                                                            </li>
-
-                                                            <li>
-                                                                <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																			<span class="red">
-																				<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																			</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                                </div>
+                                                <div class="hidden-sm hidden-xs btn-group">
+                                                    <form role="form" method="post"
+                                                          action="{!! route('admin.student.test.delete') !!}">
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden" name="id" value="{{$dt->id}}">
+                                                        <button type="submit" onclick="return confirm('Are you sure?')"
+                                                                class="btn btn-xs btn-danger">
+                                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -148,9 +103,7 @@
                                 </tbody>
                             </table>
                         </div>
-
                         @include('AdminView.Share.pagination_default', ['paginator'=>$data])
-
                     </div>
                 </div>
             </div><!-- /.page-content -->

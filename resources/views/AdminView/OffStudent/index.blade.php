@@ -11,10 +11,6 @@
             @include('AdminView.Share.breadcrumbs')
             <div class="page-content">
                 <div class="row">
-                    {{--<div class="col-md-12 col-lg-12">--}}
-                    {{--Search--}}
-                    {{--<input name="email" type="text" class="margin-bottom-10" placeholder="Search name, email, phone,..."/><button class="btn btn-success btn-sm margin-left-10">Search</button>--}}
-                    {{--</div>--}}
                     <div class="col-md-12 col-lg-12">
                         <div class="pull-right tableTools-container">
                             <div class="dt-buttons btn-overlap btn-group">
@@ -48,12 +44,6 @@
                         <div class="table-responsive">
                             <table id="simple-table" class="table  table-bordered table-hover">
                                 <thead>
-                                <th class="center">
-                                    <label class="pos-rel">
-                                        <input type="checkbox" class="ace"/>
-                                        <span class="lbl"></span>
-                                    </label>
-                                </th>
                                 <th>STT</th>
                                 <th>Họ Tên</th>
                                 <th>Ngáy Sinh</th>
@@ -63,21 +53,19 @@
                                 <th>Khóa Học</th>
                                 <th>Lớp Học</th>
                                 <th>Ngày Bắt Đầu Nghỉ</th>
-                                {{--<th>Ca Học Mong Muốn</th>--}}
-                                {{--<th>Trạng Thái Xếp Lớp</th>--}}
-                                <th></th>
+                                <th>
+                                    <a style="width: 100%" href="{!! route('admin.student.off.create') !!}"
+                                       class="btn btn-success btn-bold">
+                                    <span>
+                                        <i class=" icon-only ace-icon ace-icon fa fa-plus bigger-110"></i>
+                                    </span>
+                                    </a>
+                                </th>
                                 </thead>
-
                                 <tbody>
                                 @if($data->count()>0)
                                     @foreach($data as $key => $dt)
                                         <tr>
-                                            <td class="center">
-                                                <label class="pos-rel">
-                                                    <input type="checkbox" class="ace"/>
-                                                    <span class="lbl"></span>
-                                                </label>
-                                            </td>
                                             <td>{{($key+1)+($data->currentPage()-1)*$data->perPage()}}</td>
                                             <td>{{$dt->Name}}</td>
                                             <td>{{$dt->Bod}}</td>
@@ -89,55 +77,23 @@
                                             <td>{{$dt->RegDate}}</td>
                                             <td>
                                                 <div class="hidden-sm hidden-xs btn-group">
-                                                    <button class="btn btn-xs btn-success">
-                                                        <i class="ace-icon fa fa-check bigger-120"></i>
-                                                    </button>
-
-                                                    <button class="btn btn-xs btn-info">
-                                                        <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                                    </button>
-
-                                                    <button class="btn btn-xs btn-danger">
-                                                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                    </button>
-
-                                                    <button class="btn btn-xs btn-warning">
-                                                        <i class="ace-icon fa fa-flag bigger-120"></i>
-                                                    </button>
-                                                </div>
-
-                                                <div class="hidden-md hidden-lg">
-                                                    <div class="inline pos-rel">
-                                                        <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                                            <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                                                    <a href="{!! route('admin.student.off.update',['id' => $dt->id]) !!}">
+                                                        <button class="btn btn-xs btn-info">
+                                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
                                                         </button>
+                                                    </a>
 
-                                                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                            <li>
-                                                                <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																			<span class="blue">
-																				<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																			</span>
-                                                                </a>
-                                                            </li>
-
-                                                            <li>
-                                                                <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																			<span class="green">
-																				<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																			</span>
-                                                                </a>
-                                                            </li>
-
-                                                            <li>
-                                                                <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																			<span class="red">
-																				<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																			</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                                </div>
+                                                <div class="hidden-sm hidden-xs btn-group">
+                                                    <form role="form" method="post"
+                                                          action="{!! route('admin.student.off.delete') !!}">
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden" name="id" value="{{$dt->id}}">
+                                                        <button type="submit" onclick="return confirm('Are you sure?')"
+                                                                class="btn btn-xs btn-danger">
+                                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>

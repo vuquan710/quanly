@@ -53,43 +53,41 @@ Route::prefix('admin')
                         'show' => 'admin.users.show',
                     ]
                 ]);
+                //new  1
+                Route::match(['get'], 'new', ['as' => 'admin.student.new.index', 'uses' => 'RegisterNewController@index']);
+                Route::match(['get', 'post'], 'new/create', ['as' => 'admin.student.new.create', 'uses' => 'RegisterNewController@create']);
+                Route::match(['get', 'post'], 'new/update', ['as' => 'admin.student.new.update', 'uses' => 'RegisterNewController@update']);
+                Route::post('new/delete',['as'=>'admin.student.new.delete','uses'=>'RegisterNewController@delete']);
 
-                Route::resource('new', 'RegisterNewController', [
-                    'names' => [
-                        'index' => 'admin.new.index',
-                    ]
-                ]);
+                //next 2
+                Route::match(['get'], 'next', ['as' => 'admin.student.next.index', 'uses' => 'RegisterNextController@index']);
+                Route::match(['get', 'post'], 'next/create', ['as' => 'admin.student.next.create', 'uses' => 'RegisterNextController@create']);
+                Route::match(['get', 'post'], 'next/update', ['as' => 'admin.student.next.update', 'uses' => 'RegisterNextController@update']);
+                Route::post('next/delete',['as'=>'admin.student.next.delete','uses'=>'RegisterNextController@delete']);
 
-                Route::resource('next', 'RegisterNextController', [
-                    'names' => [
-                        'index' => 'admin.next.index',
-                    ]
-                ]);
+                //test 3
+                Route::match(['get'], 'test', ['as' => 'admin.student.test.index', 'uses' => 'TestClassController@index']);
+                Route::match(['get', 'post'], 'test/create', ['as' => 'admin.student.test.create', 'uses' => 'TestClassController@create']);
+                Route::match(['get', 'post'], 'test/update', ['as' => 'admin.student.test.update', 'uses' => 'TestClassController@update']);
+                Route::post('test/delete',['as'=>'admin.student.test.delete','uses'=>'TestClassController@delete']);
 
-                Route::resource('test', 'TestClassController', [
-                    'names' => [
-                        'index' => 'admin.test.index',
-                    ]
-                ]);
+                //waiting 4
+                Route::match(['get'], 'waiting', ['as' => 'admin.student.waiting.index', 'uses' => 'WaitingStudentController@index']);
+                Route::match(['get', 'post'], 'waiting/create', ['as' => 'admin.student.waiting.create', 'uses' => 'WaitingStudentController@create']);
+                Route::match(['get', 'post'], 'waiting/update', ['as' => 'admin.student.waiting.update', 'uses' => 'WaitingStudentController@update']);
+                Route::post('waiting/delete',['as'=>'admin.student.waiting.delete','uses'=>'WaitingStudentController@delete']);
 
-                Route::resource('waiting', 'WaitingStudentController', [
-                    'names' => [
-                        'index' => 'admin.waiting.index',
-                    ]
-                ]);
+                //tutoring 5
+                Route::match(['get'], 'tutoring', ['as' => 'admin.student.tutoring.index', 'uses' => 'TutoringStudentController@index']);
+                Route::match(['get', 'post'], 'tutoring/create', ['as' => 'admin.student.tutoring.create', 'uses' => 'TutoringStudentController@create']);
+                Route::match(['get', 'post'], 'tutoring/update', ['as' => 'admin.student.tutoring.update', 'uses' => 'TutoringStudentController@update']);
+                Route::post('tutoring/delete',['as'=>'admin.student.tutoring.delete','uses'=>'TutoringStudentController@delete']);
 
-                Route::resource('tutoring', 'TutoringStudentController', [
-                    'names' => [
-                        'index' => 'admin.tutoring.index',
-                    ]
-                ]);
-
-                Route::resource('off', 'OffStudentController', [
-                    'names' => [
-                        'index' => 'admin.off.index',
-                    ]
-                ]);
-
+                //of 6
+                Route::match(['get'], 'off', ['as' => 'admin.student.off.index', 'uses' => 'OffStudentController@index']);
+                Route::match(['get', 'post'], 'off/create', ['as' => 'admin.student.off.create', 'uses' => 'OffStudentController@create']);
+                Route::match(['get', 'post'], 'off/update', ['as' => 'admin.student.off.update', 'uses' => 'OffStudentController@update']);
+                Route::post('off/delete',['as'=>'admin.student.off.delete','uses'=>'OffStudentController@delete']);
             });
 
     });

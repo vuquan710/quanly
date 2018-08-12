@@ -17,6 +17,10 @@ class Students extends Model
         return self::where('Type',1)->paginate($limit, ['*'], 'page', $page);
     }
 
+    public static function getOneNewCourse ($id) {
+        return self::where('id',$id)->get();
+    }
+
     public static function getNextCourses ($limit,$page) {
         return self::where('Type',2)->paginate($limit, ['*'], 'page', $page);
     }
@@ -26,7 +30,7 @@ class Students extends Model
     }
 
     public static function getWaitingStudent ($limit,$page) {
-        return self::whereNull('ClassName')->where('Type',4)->paginate($limit, ['*'], 'page', $page);
+        return self::where('Type',4)->paginate($limit, ['*'], 'page', $page);
     }
 
     public static function getTutoring ($limit,$page) {

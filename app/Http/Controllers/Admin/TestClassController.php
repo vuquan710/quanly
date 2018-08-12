@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class TestClassController extends AdminAppController
 {
-    protected $dirView = 'AdminView.RegNext.';
+    protected $dirView = 'AdminView.ClassTest.';
 
     public function index(Request $request)
     {
@@ -22,5 +22,46 @@ class TestClassController extends AdminAppController
         $data = Students::getClassTest($limit,$page);
         $breadcrumbs = "Danh Sách Các Lớp Kiểm Tra Định Kỳ";
         return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs]);
+    }
+
+    public function create (Request $request) {
+        if ($request->isMethod('POST')) {
+            $student = new Students();
+            $student->fill($request->input());
+            try {
+                $student->save();
+                return redirect()->route('admin.student.test.index');
+            } catch (Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
+            }
+        }
+        return view($this->dirView . 'create');
+    }
+
+    public function update (Request $request){
+        $data = Students::getOneNewCourse($request->id);
+        if ($request->isMethod('POST')) {
+            $student =  Students::find($request->id);
+            $student->update($request->input());
+            try {
+                $student->save();
+                return redirect()->route('admin.student.test.index');
+            } catch (Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
+            }
+        }
+        return view($this->dirView . 'update')->with(['data'=>$data]);
+    }
+
+    public function delete (Request $request) {
+        if ($request->isMethod('POST')) {
+            $student =  Students::find($request->id);
+            try {
+                $student->delete();
+                return redirect()->route('admin.student.test.index');
+            } catch (Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
+            }
+        }
     }
 }

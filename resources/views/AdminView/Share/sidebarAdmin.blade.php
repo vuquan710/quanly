@@ -75,7 +75,7 @@
                 </li>
             </ul>
         </li>
-        <li class="{{(strpos(\Route::current()->getName(), 'admin.') !== false)?"open active":"" }}">
+        <li class="{{(strpos(\Route::current()->getName(), 'admin.student') !== false)?"open active":"" }}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-list-alt"></i>
                 <span class="menu-text">Quản Lý Học Viên</span>
@@ -84,48 +84,48 @@
             <b class="arrow"></b>
 
             <ul class="submenu">
-                <li class="{{(strpos(\Route::current()->getName(), 'admin.new.index') !== false)?"active":"" }}">
-                    <a href="{!! route('admin.new.index') !!}">
+                <li class="{{(strpos(\Route::current()->getName(), 'admin.student.new.index') !== false)?"active":"" }}">
+                    <a href="{!! route('admin.student.new.index') !!}">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Học Viên Đăng Ký Mới
                     </a>
                     <b class="arrow"></b>
                 </li>
 
-                <li class="{{(strpos(\Route::current()->getName(), 'admin.next.index') !== false)?"active":"" }}">
-                    <a href="{!! route('admin.next.index') !!}">
+                <li class="{{(strpos(\Route::current()->getName(), 'admin.student.next.index') !== false)?"active":"" }}">
+                    <a href="{!! route('admin.student.next.index') !!}">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Học Viên Đăng Ký Tiếp
                     </a>
                     <b class="arrow"></b>
                 </li>
 
-                <li class="{{(strpos(\Route::current()->getName(), 'admin.test.index') !== false)?"active":"" }}">
-                    <a href="{!! route('admin.test.index') !!}">
+                <li class="{{(strpos(\Route::current()->getName(), 'admin.student.test.index') !== false)?"active":"" }}">
+                    <a href="{!! route('admin.student.test.index') !!}">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Lớp Kiểm Tra Định Kỳ
                     </a>
                     <b class="arrow"></b>
                 </li>
 
-                <li class="{{(strpos(\Route::current()->getName(), 'admin.waiting.index') !== false)?"active":"" }}">
-                    <a href="{!! route('admin.waiting.index') !!}">
+                <li class="{{(strpos(\Route::current()->getName(), 'admin.student.waiting.index') !== false)?"active":"" }}">
+                    <a href="{!! route('admin.student.waiting.index') !!}">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Danh Sách Chờ Xếp Lớp
                     </a>
                     <b class="arrow"></b>
                 </li>
 
-                <li class="{{(strpos(\Route::current()->getName(), 'admin.tutoring.index') !== false)?"active":"" }}">
-                    <a href="{!! route('admin.tutoring.index') !!}">
+                <li class="{{(strpos(\Route::current()->getName(), 'admin.student.tutoring.index') !== false)?"active":"" }}">
+                    <a href="{!! route('admin.student.tutoring.index') !!}">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Danh Sách Phụ Đạo
                     </a>
                     <b class="arrow"></b>
                 </li>
 
-                <li class="{{(strpos(\Route::current()->getName(), 'admin.off.index') !== false)?"active":"" }}">
-                    <a href="{!! route('admin.off.index') !!}">
+                <li class="{{(strpos(\Route::current()->getName(), 'admin.student.off.index') !== false)?"active":"" }}">
+                    <a href="{!! route('admin.student.off.index') !!}">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Danh Sách Học Viên Nghỉ
                     </a>
