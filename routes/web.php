@@ -11,23 +11,10 @@
 |
 */
 
-Route::middleware(['UserMiddleware'])
-    ->domain(env('DOMAIN_USER', 'fashion-dev.com'))
-    ->namespace('User')
+Route::namespace('User')
     ->group(function () {
-        Route::resource('/', 'HomesController', ['only' => [
-            'index'
-        ]]);
-        //News route
-        Route::resource('news', 'NewsController', ['only' => [
-            'index', 'show'
-        ]]);
-
-        Route::get('user/profile', function () {
-            // Uses first & second Middleware
-        });
+        Route::get('/', ['uses' => 'HomesController@index']);
     });
-
 //BackEnd route
 Route::prefix('admin')
     ->namespace('Admin')
@@ -53,11 +40,23 @@ Route::prefix('admin')
                         'show' => 'admin.users.show',
                     ]
                 ]);
+
+                Route::match(['get'], 'employee', ['as' => 'admin.employee.index', 'uses' => 'EmployeeController@index']);
+                Route::match(['get', 'post'], 'employee/create', ['as' => 'admin.employee.create', 'uses' => 'EmployeeController@create']);
+                Route::match(['get', 'post'], 'employee/update', ['as' => 'admin.employee.update', 'uses' => 'EmployeeController@update']);
+                Route::post('employee/delete',['as'=>'admin.employee.delete','uses'=>'EmployeeController@delete']);
+
+                Route::match(['get'], 'students', ['as' => 'admin.student.students.index', 'uses' => 'StudentController@index']);
+                Route::match(['get', 'post'], 'students/create', ['as' => 'admin.student.students.create', 'uses' => 'StudentController@create']);
+                Route::match(['get', 'post'], 'students/update', ['as' => 'admin.student.students.update', 'uses' => 'StudentController@update']);
+                Route::post('students/delete',['as'=>'admin.student.students.delete','uses'=>'StudentController@delete']);
                 //new  1
                 Route::match(['get'], 'new', ['as' => 'admin.student.new.index', 'uses' => 'RegisterNewController@index']);
                 Route::match(['get', 'post'], 'new/create', ['as' => 'admin.student.new.create', 'uses' => 'RegisterNewController@create']);
                 Route::match(['get', 'post'], 'new/update', ['as' => 'admin.student.new.update', 'uses' => 'RegisterNewController@update']);
                 Route::post('new/delete',['as'=>'admin.student.new.delete','uses'=>'RegisterNewController@delete']);
+                Route::get('new/download',['as'=>'admin.student.new.download','uses'=>'RegisterNewController@download']);
+
 
                 //next 2
                 Route::match(['get'], 'next', ['as' => 'admin.student.next.index', 'uses' => 'RegisterNextController@index']);

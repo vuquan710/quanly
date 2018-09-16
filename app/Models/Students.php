@@ -13,8 +13,15 @@ class Students extends Model
         'Status', 'Type', 'RegDateNew','RegDate',
     ];
 
-    public static function getNewCourses ($limit,$page) {
-        return self::where('Type',1)->paginate($limit, ['*'], 'page', $page);
+    public static function listStudent ($limit,$page) {
+        return self::where('Type','<>',3)->paginate($limit, ['*'], 'page', $page);
+    }
+
+    public static function getNewCourses ($limit,$page, $key = null) {
+        return self::where('Type',1)
+            ->where('Name','like','%' . $key . '%')
+            ->orWhere('ClassName','like','%' . $key . '%')
+            ->paginate($limit, ['*'], 'page', $page);
     }
 
     public static function getOneNewCourse ($id) {

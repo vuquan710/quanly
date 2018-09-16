@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use App\Models\Students;
-use Illuminate\Support\Facades\Response;
 
-class RegisterNewController extends AdminAppController
+class StudentController extends AdminAppController
 {
-    protected $dirView = 'AdminView.RegNew.';
+    protected $dirView = 'AdminView.Students.';
 
     public function index(Request $request)
     {
@@ -21,14 +19,8 @@ class RegisterNewController extends AdminAppController
         if (!empty($request['page'])) {
             $page = $request['page'];
         }
-        if ($request->search) {
-            $key = $request->search;
-            $data = Students::getNewCourses($limit,$page,$key);
-        }else {
-            $data = Students::getNewCourses($limit,$page);
-        }
-        $breadcrumbs = "Danh Sách Học Viên Đăng Ký Mới";
-        session(['key' => $data]);
+        $data = Students::listStudent($limit,$page);
+        $breadcrumbs = "Danh Sách Học";
         return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs]);
     }
 
@@ -37,8 +29,8 @@ class RegisterNewController extends AdminAppController
             $student = new Students();
             $student->fill($request->input());
             try {
-              $student->save();
-              return redirect()->route('admin.student.new.index');
+                $student->save();
+                return redirect()->route('admin.student.new.index');
             } catch (Exception $e) {
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
             }
@@ -71,30 +63,5 @@ class RegisterNewController extends AdminAppController
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
             }
         }
-    }
-
-    public function download (Request $request) {
-        $headers = array(
-            "Content-type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=file.csv",
-            "Pragma" => "no-cache",
-            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
-            "Expires" => "0"
-        );
-
-        $students =  $request->session()->get('key');
-        $columns = ['Name'];
-
-        $callback = function() use ($students, $columns)
-        {
-            $file = fopen('php://output', 'w');
-            fputcsv($file, $columns);
-
-            foreach($students as $student) {
-                fputcsv($file,[$student->Name]);
-            }
-            fclose($file);
-        };
-        return Response::stream($callback, 200, $headers);
     }
 }

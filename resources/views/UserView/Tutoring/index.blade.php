@@ -12,24 +12,31 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-md-12 col-lg-12">
-                        <div class="pull-right tableTools-container" style="display: inline-flex">
-                            <form role="search">
-                                <span class="input-icon">
-									<input type="text" placeholder="Search ..." name="search"/>
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-                            </form>
-
-                            <form action="{!! route('admin.student.new.download')!!}" method="get">
-                                 <button class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-bold">
+                        <div class="pull-right tableTools-container">
+                            <div class="dt-buttons btn-overlap btn-group">
+                                <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
+                                   tabindex="0" title="">
+                                    <span>
+                                        <i class="fa fa-trash-o bigger-110 red"></i>
+                                        <span class="hidden">Show/hide columns</span>
+                                    </span>
+                                </a>
+                                <a class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-bold"
+                                   title="">
+                                    <span>
                                         <i class="fa fa-cloud-download bigger-110 blue"></i>
                                         <span class="hidden">Export to CSV</span>
-                                 </button>
-                            </form>
-
-
+                                    </span>
+                                </a>
+                                <a class="dt-button buttons-print btn btn-white btn-primary btn-bold" tabindex="0"
+                                   title="">
+                                    <span>
+                                        <i class="fa fa-print bigger-110 grey"></i>
+                                        <span class="hidden">Print</span>
+                                    </span>
+                                </a>
+                            </div>
                         </div>
-
                         <div class="pull-left">
                             @include('AdminView.Share.limit_default', ['paginator'=>$data, 'listOption' => \App\Http\Controllers\Admin\AdminAppController::$listOptionPaginate])
                         </div>
@@ -44,12 +51,10 @@
                                     <th>Tên Phụ Huynh</th>
                                     <th>Số Điện Thoại</th>
                                     <th>Facebook</th>
-                                    <th>Khóa Học</th>
-                                    <th>Lớp Học</th>
-                                    <th>Ca Học</th>
-                                    <th>Ngày Đăng Ký</th>
+                                    <th>Buổi Nghỉ</th>
+                                    <th>Ngày Phụ Đạo</th>
                                     <th>
-                                        <a style="width: 75%" href="{!! route('admin.student.new.create') !!}"
+                                        <a style="width: 100%" href="{!! route('admin.student.tutoring.create') !!}"
                                            class="btn btn-success btn-bold">
                                     <span>
                                         <i class=" icon-only ace-icon ace-icon fa fa-plus bigger-110"></i>
@@ -69,20 +74,11 @@
                                             <td>{{$dt->Parent}}</td>
                                             <td>{{$dt->Phone}}</td>
                                             <td>{{$dt->Facebook}}</td>
-                                            <td>{{$dt->Course}}</td>
-                                            <td>{{$dt->ClassName}}</td>
-                                            @if($dt->Lecture == 1)
-                                                <td>9h30 - 11h00</td>
-                                            @elseif ($dt->Lecture == 2)
-                                                <td>17h30 - 19h00</td>
-                                            @else
-                                                <td>19h05 - 20h35</td>
-                                            @endif
                                             <td>{{$dt->RegDate}}</td>
-
+                                            <td>{{$dt->RegDateNew}}</td>
                                             <td>
                                                 <div class="hidden-sm hidden-xs btn-group">
-                                                    <a href="{!! route('admin.student.new.update',['id' => $dt->id]) !!}">
+                                                    <a href="{!! route('admin.student.tutoring.update',['id' => $dt->id]) !!}">
                                                         <button class="btn btn-xs btn-info">
                                                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                                                         </button>
@@ -91,7 +87,7 @@
                                                 </div>
                                                 <div class="hidden-sm hidden-xs btn-group">
                                                     <form role="form" method="post"
-                                                          action="{!! route('admin.student.new.delete') !!}">
+                                                          action="{!! route('admin.student.tutoring.delete') !!}">
                                                         {{ csrf_field() }}
                                                         <input type="hidden" name="id" value="{{$dt->id}}">
                                                         <button type="submit" onclick="return confirm('Are you sure?')"

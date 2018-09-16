@@ -12,22 +12,29 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-md-12 col-lg-12">
-                        <div class="pull-right tableTools-container" style="display: inline-flex">
-                            <form role="search">
-                                <span class="input-icon">
-									<input type="text" placeholder="Search ..." name="search"/>
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-                            </form>
-
-                            <form action="{!! route('admin.student.new.download')!!}" method="get">
-                                 <button class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-bold">
+                        <div class="pull-right tableTools-container">
+                            <div class="dt-buttons btn-overlap btn-group">
+                                <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold">
+                                    <span>
+                                        <i class=" icon-only ace-icon ace-icon fa fa-plus bigger-110"></i>
+                                        <span class="hidden">Show/hide columns</span>
+                                    </span>
+                                </a>
+                                <a class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-bold"
+                                   title="">
+                                    <span>
                                         <i class="fa fa-cloud-download bigger-110 blue"></i>
                                         <span class="hidden">Export to CSV</span>
-                                 </button>
-                            </form>
-
-
+                                    </span>
+                                </a>
+                                <a class="dt-button buttons-print btn btn-white btn-primary btn-bold"
+                                   title="">
+                                    <span>
+                                        <i class="fa fa-print bigger-110 grey"></i>
+                                        <span class="hidden">Print</span>
+                                    </span>
+                                </a>
+                            </div>
                         </div>
 
                         <div class="pull-left">
@@ -49,7 +56,7 @@
                                     <th>Ca Học</th>
                                     <th>Ngày Đăng Ký</th>
                                     <th>
-                                        <a style="width: 75%" href="{!! route('admin.student.new.create') !!}"
+                                        <a style="width: 100%" href="{!! route('admin.student.new.create') !!}"
                                            class="btn btn-success btn-bold">
                                     <span>
                                         <i class=" icon-only ace-icon ace-icon fa fa-plus bigger-110"></i>
