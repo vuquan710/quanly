@@ -21,15 +21,11 @@ class RegisterNewController extends AdminAppController
         if (!empty($request['page'])) {
             $page = $request['page'];
         }
-        if ($request->search) {
-            $key = $request->search;
-            $data = Students::getNewCourses($limit,$page,$key);
-        }else {
-            $data = Students::getNewCourses($limit,$page);
-        }
+        $key = empty($request->search) ? "" : $request->search;
+        $data = Students::getNewCourses($limit,$page,$key);
         $breadcrumbs = "Danh Sách Học Viên Đăng Ký Mới";
         session(['key' => $data]);
-        return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs]);
+        return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs, 'dataSearch' => $key]);
     }
 
     public function create (Request $request) {
@@ -76,7 +72,7 @@ class RegisterNewController extends AdminAppController
     public function download (Request $request) {
         $headers = array(
             "Content-type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=file.csv",
+            "Content-Disposition" => "attachment; filename=doremon.csv",
             "Pragma" => "no-cache",
             "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
             "Expires" => "0"

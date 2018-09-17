@@ -1,6 +1,7 @@
 <?php
 // config
 $linkLimit = 7; // maximum number of links (a little bit inaccurate, but will be ok for now)
+$search = empty($dataSearch) ? "" : "&search=".$dataSearch;
 ?>
 
 <div class="row">
@@ -15,7 +16,7 @@ $linkLimit = 7; // maximum number of links (a little bit inaccurate, but will be
         @if ($paginator->lastPage() > 1)
             <ul class="pagination">
                 <li class="{{ ($paginator->currentPage() == 1) ? ' disabled' : '' }}">
-                    <a href="{{ ($paginator->currentPage() == 1)?'javascript:void(0)':$paginator->url(1).'&limit='.$paginator->perPage() }}">&laquo;</a>
+                    <a href="{{ ($paginator->currentPage() == 1)?'javascript:void(0)':$paginator->url(1).'&limit='.$paginator->perPage().$search }}">&laquo;</a>
                 </li>
                 @for ($i = 1; $i <= $paginator->lastPage(); $i++)
                     <?php
@@ -31,12 +32,12 @@ $linkLimit = 7; // maximum number of links (a little bit inaccurate, but will be
                     ?>
                     @if ($from < $i && $i < $to)
                         <li class="{{ ($paginator->currentPage() == $i) ? ' active' : '' }}">
-                            <a href="{{ ($paginator->currentPage() == $i)?'javascript:void(0)':$paginator->url($i).'&limit='.$paginator->perPage() }}">{{ $i }}</a>
+                            <a href="{{ ($paginator->currentPage() == $i)?'javascript:void(0)':$paginator->url($i).'&limit='.$paginator->perPage().$search }}">{{ $i }}</a>
                         </li>
                     @endif
                 @endfor
                 <li class="{{ ($paginator->currentPage() == $paginator->lastPage()) ? ' disabled' : '' }}">
-                    <a href="{{ ($paginator->currentPage() == $paginator->lastPage())?'javascript:void(0)':$paginator->url($paginator->lastPage()).'&limit='.$paginator->perPage() }}">&raquo;</a>
+                    <a href="{{ ($paginator->currentPage() == $paginator->lastPage())?'javascript:void(0)':$paginator->url($paginator->lastPage()).'&limit='.$paginator->perPage().$search }}">&raquo;</a>
                 </li>
             </ul>
         @endif
