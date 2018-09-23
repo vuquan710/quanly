@@ -51,6 +51,7 @@
                                     <th>Tên Phụ Huynh</th>
                                     <th>Số Điện Thoại</th>
                                     <th>Facebook</th>
+                                    <th>Trạng Thái</th>
                                     <th>Buổi Nghỉ</th>
                                     <th>Ngày Phụ Đạo</th>
                                     <th>
@@ -74,6 +75,13 @@
                                             <td>{{$dt->Parent}}</td>
                                             <td>{{$dt->Phone}}</td>
                                             <td>{{$dt->Facebook}}</td>
+                                            <td>
+                                                @if($dt->Status == 1)
+                                                    <span class="label label-sm label-warning">Đến Học...</span>
+                                                @else
+                                                    <span class="label label-sm label-success">Không Đến Học...</span>
+                                                @endif
+                                            </td>
                                             <td>{{$dt->RegDate}}</td>
                                             <td>{{$dt->RegDateNew}}</td>
                                             <td>

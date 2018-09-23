@@ -10,11 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::namespace('User')
-    ->group(function () {
-        Route::get('/', ['uses' => 'HomesController@index']);
-    });
+//
+//Route::namespace('User')
+//    ->group(function () {
+//        Route::get('/', ['uses' => 'HomesController@index']);
+//    });
 //BackEnd route
 Route::prefix('admin')
     ->namespace('Admin')

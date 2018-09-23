@@ -55,10 +55,10 @@ class EmployeeController extends AdminAppController
 
     public function delete (Request $request) {
         if ($request->isMethod('POST')) {
-            $student =  Students::find($request->id);
+            $empployee =  Employee::find($request->id);
             try {
-                $student->delete();
-                return redirect()->route('admin.student.new.index');
+                $empployee->delete();
+                return redirect()->route('admin.employee.index');
             } catch (Exception $e) {
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
             }

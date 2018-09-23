@@ -19,7 +19,7 @@ class TutoringStudentController extends AdminAppController
             $page = $request['page'];
         }
         $data = Students::getTutoring($limit,$page);
-        $breadcrumbs = "DDanh Sách Học Phụ Đạo";
+        $breadcrumbs = "Danh Sách Học Phụ Đạo";
         return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs]);
     }
 

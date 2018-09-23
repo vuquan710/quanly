@@ -49,7 +49,7 @@
                                     <th>Ca Học</th>
                                     <th>Ngày Đăng Ký</th>
                                     <th>
-                                        <a style="width: 75%" href="{!! route('admin.student.new.create') !!}"
+                                        <a style="width: 100%" href="{!! route('admin.student.new.create') !!}"
                                            class="btn btn-success btn-bold">
                                     <span>
                                         <i class=" icon-only ace-icon ace-icon fa fa-plus bigger-110"></i>

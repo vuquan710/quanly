@@ -8,7 +8,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-6 col-lg-6 col-md-push-3 col-lg-push-3 text-center">
-            <h1>ADL Admin Login</h1>
+            <h3>PHẦN MỀM HỖ TRỢ QUẢN LÝ TRUNG TÂM ANH NGỮ DOREMON</h3>
         </div>
         <div class="clearfix"></div>
         <div class="col-md-6 col-lg-6 col-md-push-3 col-lg-push-3">

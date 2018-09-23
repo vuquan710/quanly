@@ -21,6 +21,7 @@ class Students extends Model
         return self::where('Type',1)
             ->where('Name','like','%' . $key . '%')
             ->orWhere('ClassName','like','%' . $key . '%')
+            ->orWhere('Course','like','%' . $key . '%')
             ->paginate($limit, ['*'], 'page', $page);
     }
 

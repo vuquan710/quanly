@@ -90,6 +90,22 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"
+                                       for="form-field-1">Trạng Thái </label>
+
+                                <div class="col-sm-9">
+                                    <select class="col-xs-10 col-sm-5" id="form-field-1" name="Status">
+                                        @if(isset($dt->Status))
+                                            <option value="1" {{$dt->Status == 1 ? 'selected' : ''  }}>Đến Học
+                                            </option>
+                                            <option value="0" {{$dt->Status == 0 ? 'selected' : ''  }}>Không Đến Học
+                                            </option>
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Buổi Nghỉ</label>
 
                                 <div class="col-sm-9">

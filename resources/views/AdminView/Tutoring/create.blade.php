@@ -14,6 +14,7 @@
                       method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="Type" value="5">
+                    <input type="hidden" name="Status" value="0">
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Họ Tên </label>
 
