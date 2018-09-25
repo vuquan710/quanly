@@ -63,6 +63,7 @@ Route::prefix('admin')
                 Route::match(['get', 'post'], 'next/create', ['as' => 'admin.student.next.create', 'uses' => 'RegisterNextController@create']);
                 Route::match(['get', 'post'], 'next/update', ['as' => 'admin.student.next.update', 'uses' => 'RegisterNextController@update']);
                 Route::post('next/delete',['as'=>'admin.student.next.delete','uses'=>'RegisterNextController@delete']);
+                Route::get('next/download',['as'=>'admin.student.next.download','uses'=>'RegisterNewController@download']);
 
                 //test 3
                 Route::match(['get'], 'test', ['as' => 'admin.student.test.index', 'uses' => 'TestClassController@index']);

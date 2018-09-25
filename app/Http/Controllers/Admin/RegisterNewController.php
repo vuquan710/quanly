@@ -22,54 +22,58 @@ class RegisterNewController extends AdminAppController
             $page = $request['page'];
         }
         $key = empty($request->search) ? "" : $request->search;
-        $data = Students::getNewCourses($limit,$page,$key);
+        $data = Students::getNewCourses($limit, $page, $key);
         $breadcrumbs = "Danh Sách Học Viên Đăng Ký Mới";
         session(['key' => $data]);
         return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs, 'dataSearch' => $key]);
     }
 
-    public function create (Request $request) {
+    public function create(Request $request)
+    {
         if ($request->isMethod('POST')) {
             $student = new Students();
             $student->fill($request->input());
             try {
-              $student->save();
-              return redirect()->route('admin.student.new.index');
+                $student->save();
+                return redirect()->route('admin.student.new.index');
             } catch (Exception $e) {
-                echo 'Caught exception: ',  $e->getMessage(), "\n";
+                echo 'Caught exception: ', $e->getMessage(), "\n";
             }
         }
         return view($this->dirView . 'create');
     }
 
-    public function update (Request $request){
+    public function update(Request $request)
+    {
         $data = Students::getOneNewCourse($request->id);
         if ($request->isMethod('POST')) {
-            $student =  Students::find($request->id);
+            $student = Students::find($request->id);
             $student->update($request->input());
             try {
                 $student->save();
                 return redirect()->route('admin.student.new.index');
             } catch (Exception $e) {
-                echo 'Caught exception: ',  $e->getMessage(), "\n";
+                echo 'Caught exception: ', $e->getMessage(), "\n";
             }
         }
-        return view($this->dirView . 'update')->with(['data'=>$data]);
+        return view($this->dirView . 'update')->with(['data' => $data]);
     }
 
-    public function delete (Request $request) {
+    public function delete(Request $request)
+    {
         if ($request->isMethod('POST')) {
-            $student =  Students::find($request->id);
+            $student = Students::find($request->id);
             try {
                 $student->delete();
                 return redirect()->route('admin.student.new.index');
             } catch (Exception $e) {
-                echo 'Caught exception: ',  $e->getMessage(), "\n";
+                echo 'Caught exception: ', $e->getMessage(), "\n";
             }
         }
     }
 
-    public function download (Request $request) {
+    public function download(Request $request)
+    {
         $headers = array(
             "Content-type" => "text/csv",
             "Content-Disposition" => "attachment; filename=doremon.csv",
@@ -78,16 +82,14 @@ class RegisterNewController extends AdminAppController
             "Expires" => "0"
         );
 
-        $students =  $request->session()->get('key');
-        $columns = ['Name'];
-
-        $callback = function() use ($students, $columns)
-        {
+        $students = $request->session()->get('key');
+        $columns = ['Số thứ tự', 'Ngày Sinh', 'Tên Phụ Huynh', 'Số Điện Thoại', 'Facebook', 'Khóa Học', 'Lớp Học', 'Ca Học', 'Ngày Đăng Ký'];
+        $callback = function () use ($students, $columns) {
             $file = fopen('php://output', 'w');
             fputcsv($file, $columns);
 
-            foreach($students as $student) {
-                fputcsv($file,[$student->Name]);
+            foreach ($students as $student) {
+                fputcsv($file, [$student->id, $student->Name, $student->Bod, $student->Parent, $student->Phone, $student->Facebook, $student->Course, $student->ClassName, $student->CourseNew, $student->RegDateNew]);
             }
             fclose($file);
         };

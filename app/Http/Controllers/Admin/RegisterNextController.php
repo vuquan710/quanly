@@ -19,9 +19,11 @@ class RegisterNextController extends AdminAppController
         if (!empty($request['page'])) {
             $page = $request['page'];
         }
-        $data = Students::getNextCourses($limit,$page);
+        $key = empty($request->search) ? "" : $request->search;
+        $data = Students::getNextCourses($limit,$page,$key);
         $breadcrumbs = "Danh Sách Học Viên Đăng Ký Tiếp Khóa Học";
-        return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs]);
+        session(['key' => $data]);
+        return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs, 'dataSearch' => $key]);
     }
     public function create (Request $request) {
         if ($request->isMethod('POST')) {
@@ -62,5 +64,30 @@ class RegisterNextController extends AdminAppController
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
             }
         }
+    }
+
+    public function download (Request $request) {
+        $headers = array(
+            "Content-type" => "text/csv",
+            "Content-Disposition" => "attachment; filename=doremon.csv",
+            "Pragma" => "no-cache",
+            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+            "Expires" => "0"
+        );
+
+        $students =  $request->session()->get('key');
+        $columns = ['Name'];
+
+        $callback = function() use ($students, $columns)
+        {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            foreach($students as $student) {
+                fputcsv($file,[$student->Name]);
+            }
+            fclose($file);
+        };
+        return Response::stream($callback, 200, $headers);
     }
 }

@@ -26,8 +26,6 @@
                                         <span class="hidden">Export to CSV</span>
                                  </button>
                             </form>
-
-
                         </div>
 
                         <div class="pull-left">
