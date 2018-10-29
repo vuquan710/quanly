@@ -83,7 +83,7 @@ class RegisterNewController extends AdminAppController
         );
 
         $students = $request->session()->get('key');
-        $columns = ['Số thứ tự', 'Ngày Sinh', 'Tên Phụ Huynh', 'Số Điện Thoại', 'Facebook', 'Khóa Học', 'Lớp Học', 'Ca Học', 'Ngày Đăng Ký'];
+        $columns = ['Số thứ tự','Tên Học Viên', 'Ngày Sinh', 'Tên Phụ Huynh', 'Số Điện Thoại', 'Facebook', 'Khóa Học', 'Lớp Học', 'Ca Học', 'Ngày Đăng Ký'];
         $callback = function () use ($students, $columns) {
             $file = fopen('php://output', 'w');
             fputcsv($file, $columns);

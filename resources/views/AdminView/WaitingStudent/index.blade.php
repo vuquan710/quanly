@@ -12,7 +12,7 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-md-12 col-lg-12">
-                        <div class="pull-right tableTools-container">
+                        <div class="pull-right tableTools-container"  style="display: inline-flex">
                             <form role="search">
                                 <span class="input-icon">
 									<input type="text" placeholder="Search ..." name="search"/>

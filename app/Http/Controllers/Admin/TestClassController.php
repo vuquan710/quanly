@@ -19,9 +19,10 @@ class TestClassController extends AdminAppController
         if (!empty($request['page'])) {
             $page = $request['page'];
         }
-        $data = Students::getClassTest($limit,$page);
+        $key = empty($request->search) ? "" : $request->search;
+        $data = Students::getClassTest($limit,$page,$key);
         $breadcrumbs = "Danh Sách Các Lớp Kiểm Tra Định Kỳ";
-        return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs]);
+        return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs,'dataSearch' => $key]);
     }
 
     public function create (Request $request) {

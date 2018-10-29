@@ -18,13 +18,16 @@ class Students extends Model
         return self::where('Type', '<>', 3)->paginate($limit, ['*'], 'page', $page);
     }
 
-    public static function getNewCourses($limit, $page, $key = null)
+    public static function getNewCourses($limit, $page, $key)
     {
-        return self::where('Type', 1)
-            ->where('Name', 'like', '%' . $key . '%')
-            ->orWhere('ClassName', 'like', '%' . $key . '%')
-            ->orWhere('Course', 'like', '%' . $key . '%')
-            ->paginate($limit, ['*'], 'page', $page);
+        if ($key) {
+            return self::where('Type', 1)
+                ->where('Name', 'like', '%' . $key . '%')
+                ->orWhere('ClassName', 'like', '%' . $key . '%')
+                ->orWhere('Course', 'like', '%' . $key . '%')
+                ->paginate($limit, ['*'], 'page', $page);
+        }
+        return self::where('Type', 1)->paginate($limit, ['*'], 'page', $page);
     }
 
     public static function getOneNewCourse($id)
@@ -32,32 +35,62 @@ class Students extends Model
         return self::where('id', $id)->get();
     }
 
-    public static function getNextCourses($limit, $page, $key = null)
+    public static function getNextCourses($limit, $page, $key)
     {
-        return self::where('Type', 2)
-            ->where('Name', 'like', '%' . $key . '%')
-            ->orWhere('ClassName', 'like', '%' . $key . '%')
-            ->orWhere('Course', 'like', '%' . $key . '%')
-            ->paginate($limit, ['*'], 'page', $page);
+        if ($key) {
+            return self::where('Type', 2)
+                ->where('Name', 'like', '%' . $key . '%')
+                ->orWhere('ClassName', 'like', '%' . $key . '%')
+                ->orWhere('Course', 'like', '%' . $key . '%')
+                ->paginate($limit, ['*'], 'page', $page);
+        }
+        return self::where('Type', 2)->paginate($limit, ['*'], 'page', $page);
     }
 
-    public static function getClassTest($limit, $page)
+
+    public static function getClassTest($limit, $page, $key)
     {
+        if ($key) {
+            return self::where('Type', 3)
+                ->Where('ClassName', 'like', '%' . $key . '%')
+                ->paginate($limit, ['*'], 'page', $page);
+        }
         return self::where('Type', 3)->paginate($limit, ['*'], 'page', $page);
     }
 
-    public static function getWaitingStudent($limit, $page)
+    public static function getWaitingStudent($limit, $page, $key)
     {
+        if ($key) {
+            return self::where('Type', 4)
+                ->where('Name', 'like', '%' . $key . '%')
+                ->orWhere('ClassName', 'like', '%' . $key . '%')
+                ->orWhere('Course', 'like', '%' . $key . '%')
+                ->paginate($limit, ['*'], 'page', $page);
+        }
         return self::where('Type', 4)->paginate($limit, ['*'], 'page', $page);
     }
 
-    public static function getTutoring($limit, $page)
+    public static function getTutoring($limit, $page, $key)
     {
+        if ($key) {
+            return self::where('Type', 5)
+                ->where('Name', 'like', '%' . $key . '%')
+                ->orWhere('ClassName', 'like', '%' . $key . '%')
+                ->orWhere('Course', 'like', '%' . $key . '%')
+                ->paginate($limit, ['*'], 'page', $page);
+        }
         return self::where('Type', 5)->paginate($limit, ['*'], 'page', $page);
     }
 
-    public static function getOffStudent($limit, $page)
+    public static function getOffStudent($limit, $page, $key)
     {
+        if ($key) {
+            return self::where('Type', 6)
+                ->where('Name', 'like', '%' . $key . '%')
+                ->orWhere('ClassName', 'like', '%' . $key . '%')
+                ->orWhere('Course', 'like', '%' . $key . '%')
+                ->paginate($limit, ['*'], 'page', $page);
+        }
         return self::where('Type', 6)->paginate($limit, ['*'], 'page', $page);
     }
 }

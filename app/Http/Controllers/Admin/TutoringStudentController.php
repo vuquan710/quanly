@@ -18,9 +18,10 @@ class TutoringStudentController extends AdminAppController
         if (!empty($request['page'])) {
             $page = $request['page'];
         }
-        $data = Students::getTutoring($limit,$page);
+        $key = empty($request->search) ? "" : $request->search;
+        $data = Students::getTutoring($limit,$page,$key);
         $breadcrumbs = "Danh Sách Học Phụ Đạo";
-        return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs]);
+        return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs,'dataSearch' => $key]);
     }
 
     public function create (Request $request) {

@@ -1,4 +1,4 @@
-@extends('UserView.AppLayouts.default')
+@extends('AdminView.AppLayouts.default')
 
 @section('title', __('Dashboard'))
 
@@ -8,9 +8,9 @@
 @section('content')
     <div class="main-content">
         <div class="main-content-inner">
-            @include('UserView.Share.breadcrumbs')
+            @include('AdminView.Share.breadcrumbs')
             <div class="page-content">
-                User-View
+                abc
             </div><!-- /.page-content -->
 
         </div>

@@ -19,9 +19,10 @@ class StudentController extends AdminAppController
         if (!empty($request['page'])) {
             $page = $request['page'];
         }
+        $key = empty($request->search) ? "" : $request->search;
         $data = Students::listStudent($limit,$page);
         $breadcrumbs = "Danh Sách Học";
-        return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs]);
+        return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs,'dataSearch' => $key]);
     }
 
     public function create (Request $request) {

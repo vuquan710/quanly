@@ -31,7 +31,7 @@
 
 </head>
 <body class="admin-layout no-skin">
-@widget('AdminNavBar')
+@include('UserView.Widgets.navbarAdmin');
 @section('sidebar')
 @show
 <div class="main-container ace-save-state" id="main-container">

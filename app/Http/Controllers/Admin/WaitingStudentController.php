@@ -19,9 +19,10 @@ class WaitingStudentController extends AdminAppController
         if (!empty($request['page'])) {
             $page = $request['page'];
         }
-        $data = Students::getWaitingStudent($limit,$page);
+        $key = empty($request->search) ? "" : $request->search;
+        $data = Students::getWaitingStudent($limit,$page,$key);
         $breadcrumbs = "Danh Sách Chờ Xếp Lớp";
-        return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs]);
+        return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs,'dataSearch' => $key]);
     }
 
     public function create (Request $request) {
