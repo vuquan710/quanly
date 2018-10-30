@@ -27,7 +27,7 @@ class Students extends Model
                 ->orWhere('Course', 'like', '%' . $key . '%')
                 ->paginate($limit, ['*'], 'page', $page);
         }
-        return self::where('Type', 1)->paginate($limit, ['*'], 'page', $page);
+        return self::where('Type', 1)->orderBy('id','desc')->paginate($limit, ['*'], 'page', $page);
     }
 
     public static function getOneNewCourse($id)
@@ -44,7 +44,7 @@ class Students extends Model
                 ->orWhere('Course', 'like', '%' . $key . '%')
                 ->paginate($limit, ['*'], 'page', $page);
         }
-        return self::where('Type', 2)->paginate($limit, ['*'], 'page', $page);
+        return self::where('Type', 2)->orderBy('id','desc')->paginate($limit, ['*'], 'page', $page);
     }
 
 
@@ -55,7 +55,7 @@ class Students extends Model
                 ->Where('ClassName', 'like', '%' . $key . '%')
                 ->paginate($limit, ['*'], 'page', $page);
         }
-        return self::where('Type', 3)->paginate($limit, ['*'], 'page', $page);
+        return self::where('Type', 3)->orderBy('id','desc')->paginate($limit, ['*'], 'page', $page);
     }
 
     public static function getWaitingStudent($limit, $page, $key)
@@ -67,7 +67,7 @@ class Students extends Model
                 ->orWhere('Course', 'like', '%' . $key . '%')
                 ->paginate($limit, ['*'], 'page', $page);
         }
-        return self::where('Type', 4)->paginate($limit, ['*'], 'page', $page);
+        return self::where('Type', 4)->orderBy('id','desc')->paginate($limit, ['*'], 'page', $page);
     }
 
     public static function getTutoring($limit, $page, $key)
@@ -77,9 +77,10 @@ class Students extends Model
                 ->where('Name', 'like', '%' . $key . '%')
                 ->orWhere('ClassName', 'like', '%' . $key . '%')
                 ->orWhere('Course', 'like', '%' . $key . '%')
+
                 ->paginate($limit, ['*'], 'page', $page);
         }
-        return self::where('Type', 5)->paginate($limit, ['*'], 'page', $page);
+        return self::where('Type', 5)->orderBy('id','desc')->paginate($limit, ['*'], 'page', $page);
     }
 
     public static function getOffStudent($limit, $page, $key)
@@ -91,6 +92,6 @@ class Students extends Model
                 ->orWhere('Course', 'like', '%' . $key . '%')
                 ->paginate($limit, ['*'], 'page', $page);
         }
-        return self::where('Type', 6)->paginate($limit, ['*'], 'page', $page);
+        return self::where('Type', 6)->orderBy('id','desc')->paginate($limit, ['*'], 'page', $page);
     }
 }

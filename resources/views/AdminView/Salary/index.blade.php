@@ -52,7 +52,7 @@
                                     <th>Quê Quán</th>
                                     <th>Cấp Bậc</th>
                                     <th>
-                                        <a style="width: 100%" href="{!! route('admin.employee.create') !!}"
+                                        <a style="width: 100%" href="{!! route('admin.salary.create') !!}"
                                            class="btn btn-success btn-bold">
                                     <span>
                                         <i class=" icon-only ace-icon ace-icon fa fa-plus bigger-110"></i>
@@ -63,7 +63,7 @@
                                 </thead>
 
                                 <tbody>
-                                @if($data->count()>0)
+                                @if(isset($data) && $data->count()>0)
                                     @foreach($data as $key => $dt)
                                         <tr>
                                             <td>{{($key+1)+($data->currentPage()-1)*$data->perPage()}}</td>

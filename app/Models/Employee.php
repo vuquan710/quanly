@@ -12,7 +12,7 @@ class Employee extends Model
     ];
 
     public static function listEmployee ($limit,$page) {
-        return self::paginate($limit, ['*'], 'page', $page);
+        return self::orderBy('id','desc')->paginate($limit, ['*'], 'page', $page);
     }
 
     public static function getOneEmployee ($id) {

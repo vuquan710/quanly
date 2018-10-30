@@ -61,9 +61,9 @@
 
                                 <div class="col-sm-9">
                                     <select class="col-xs-10 col-sm-5" id="form-field-1" name="Rank">
-                                        <option></option>
-                                        <option value="0" {{ isset($dt->Rank) && $dt->Rank == 0  ? 'selected' : '' }} >Nhân Viên</option>
-                                        <option value="1" {{ isset($dt->Rank) && $dt->Rank == 1  ? 'selected' : '' }} >Quản Lý</option>
+                                        <option value="0" {{ isset($dt->Rank) && $dt->Rank == 0  ? 'selected' : '' }} >Nhân viên hành chính</option>
+                                        <option value="1" {{ isset($dt->Rank) && $dt->Rank == 1  ? 'selected' : '' }} >Giáo viên</option>
+                                        <option value="2" {{ isset($dt->Rank) && $dt->Rank == 2  ? 'selected' : '' }} >Quản Lý</option>
                                     </select>
                                 </div>
                             </div>

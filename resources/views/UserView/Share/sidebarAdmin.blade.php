@@ -4,7 +4,7 @@
         <li class="">
             <a href="#">
                 <i class="menu-icon fa fa-tachometer"></i>
-                <span class="menu-text"> Dashboard </span>
+                <span class="menu-text"> Danh Mục </span>
             </a>
 
             <b class="arrow"></b>

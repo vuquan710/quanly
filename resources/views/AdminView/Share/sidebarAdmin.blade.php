@@ -4,12 +4,12 @@
         <li class="">
             <a href="#">
                 <i class="menu-icon fa fa-tachometer"></i>
-                <span class="menu-text"> Dashboard </span>
+                <span class="menu-text"> Danh Mục </span>
             </a>
 
             <b class="arrow"></b>
         </li>
-        <li class="{{(strpos(\Route::current()->getName(), 'admin.employee.') !== false)?"open active":"" }}">
+        <li class="{{(strpos(\Route::current()->getName(),'admin.employee.') !== false) || (strpos(\Route::current()->getName(),'admin.salary.') !== false) ?"open active":"" }}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-desktop"></i>
                 <span class="menu-text">Quản Lý Nhân Viên</span>
@@ -25,16 +25,8 @@
                     <b class="arrow"></b>
                 </li>
 
-                <li class="">
-                    <a href="#">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                      Chấm Công
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-
-                <li class="">
-                    <a href="#">
+                <li class="{{(strpos(\Route::current()->getName(), 'admin.salary.index') !== false)?"active":"" }}">
+                    <a href="{!! route('admin.salary.index') !!}">
                         <i class="menu-icon fa fa-caret-right"></i>
                        Tính Lương
                     </a>

@@ -52,6 +52,11 @@ Route::prefix('admin')
                 Route::match(['get', 'post'], 'employee/update', ['as' => 'admin.employee.update', 'uses' => 'EmployeeController@update']);
                 Route::post('employee/delete',['as'=>'admin.employee.delete','uses'=>'EmployeeController@delete']);
 
+                Route::match(['get'], 'salary', ['as' => 'admin.salary.index', 'uses' => 'SalaryController@index']);
+                Route::match(['get', 'post'], 'salary/create', ['as' => 'admin.salary.create', 'uses' => 'SalaryController@create']);
+                Route::match(['get', 'post'], 'employee/update', ['as' => 'admin.employee.update', 'uses' => 'EmployeeController@update']);
+                Route::post('employee/delete',['as'=>'admin.employee.delete','uses'=>'EmployeeController@delete']);
+
                 Route::match(['get'], 'students', ['as' => 'admin.student.students.index', 'uses' => 'StudentController@index']);
                 Route::match(['get', 'post'], 'students/create', ['as' => 'admin.student.students.create', 'uses' => 'StudentController@create']);
                 Route::match(['get', 'post'], 'students/update', ['as' => 'admin.student.students.update', 'uses' => 'StudentController@update']);
