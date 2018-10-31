@@ -10,7 +10,7 @@
         <div class="main-content-inner">
             @include('AdminView.Share.breadcrumbs')
             <div class="page-content">
-                <form class="form-horizontal" role="form" action="{!! route('admin.employee.create') !!}"
+                <form class="form-horizontal" role="form" action="{!! route('admin.salary.create') !!}"
                       method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="Type" value="1">
@@ -18,7 +18,7 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Họ Tên </label>
 
                         <div class="col-sm-9">
-                            <select class="col-xs-10 col-sm-5" id="form-field-1" name="Name">
+                            <select class="col-xs-10 col-sm-5" id="form-field-1" name="EmployeeId">
                                 @if(isset($employee) && $employee->count()>0)
                                     @foreach($employee as $key => $e)
                                 <option value="<?= $e->id ?>"><?= $e->Name?></option>
@@ -32,8 +32,10 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ngày Công </label>
 
                         <div class="col-sm-9">
-                            <input type="text" name="Work"
-                                   id="form-field-1" class="col-xs-10 col-sm-5"/>
+                            <input type="text" name="Work" required
+                                   id="form-field-1" class="col-xs-10 col-sm-5 work"
+                                   onkeydown="Check(event);" onkeyup="Check(event);"
+                            />
                         </div>
                     </div>
 
@@ -41,7 +43,18 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lương Cơ Bản </label>
 
                         <div class="col-sm-9">
-                            <input type="text" name="Basic"
+                            <input type="text" name="Basic" required
+                                   id="form-field-1" class="col-xs-10 col-sm-5 basic"
+                                   onkeydown="Check(event);" onkeyup="Check(event);"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tháng </label>
+
+                        <div class="col-sm-9">
+                            <input type="month" name="Month" min="2018-03" value='<?php echo date('Y-m');?>'
                                    id="form-field-1" class="col-xs-10 col-sm-5 basic"/>
                         </div>
                     </div>
@@ -52,7 +65,9 @@
 
                         <div class="col-sm-9">
                             <input type="text" name="Bonus"
-                                   id="form-field-1" class="col-xs-10 col-sm-5"/>
+                                   id="form-field-1" class="col-xs-10 col-sm-5 bonus"
+                                   onkeydown="Check(event);" onkeyup="Check(event);"
+                            />
                         </div>
                     </div>
 
@@ -60,8 +75,8 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Thực Lĩnh </label>
 
                         <div class="col-sm-9">
-                            <input type="text" name="Total"
-                                   id="form-field-1" class="col-xs-10 col-sm-5"/>
+                            <input type="text" name="Total" readonly
+                                   id="form-field-1" class="col-xs-10 col-sm-5 total"/>
                         </div>
                     </div>
 

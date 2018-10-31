@@ -47,10 +47,11 @@
                                 <tr>
                                     <th>STT</th>
                                     <th>Họ Tên</th>
-                                    <th>Ngáy Sinh</th>
-                                    <th>Trường Theo Học</th>
-                                    <th>Quê Quán</th>
-                                    <th>Cấp Bậc</th>
+                                    <th>Ngày Công</th>
+                                    <th>Lương Cơ Bản</th>
+                                    <th>Thưởng</th>
+                                    <th>Thực Lĩnh</th>
+                                    <th>Tháng</th>
                                     <th>
                                         <a style="width: 100%" href="{!! route('admin.salary.create') !!}"
                                            class="btn btn-success btn-bold">
@@ -68,19 +69,15 @@
                                         <tr>
                                             <td>{{($key+1)+($data->currentPage()-1)*$data->perPage()}}</td>
                                             <td>{{$dt->Name}}</td>
-                                            <td>{{$dt->Bod}}</td>
-                                            <td>{{$dt->School}}</td>
-                                            <td>{{$dt->Country}}</td>
-                                            @if($dt->Rank == 2)
-                                                <td>Quản Lý</td>
-                                            @elseif ($dt->Rank == 1)
-                                                <td>Giáo Viên</td>
-                                            @else
-                                                <td>Nhân viên hành chính</td>
-                                            @endif
+                                            <td>{{$dt->Work}}</td>
+                                            <td>{{$dt->Basic}}</td>
+                                            <td>{{$dt->Bonus}}</td>
+                                            <td>{{(($dt->Basic/26)*$dt->Work)+$dt->Bonus}}</td>
+                                            <td>{{$dt->Month}}</td>
+
                                             <td>
                                                 <div class="hidden-sm hidden-xs btn-group">
-                                                    <a href="{!! route('admin.employee.update',['id' => $dt->id]) !!}">
+                                                    <a href="{!! route('admin.salary.update',['id' => $dt->id]) !!}">
                                                         <button class="btn btn-xs btn-info">
                                                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                                                         </button>
@@ -89,7 +86,7 @@
                                                 </div>
                                                 <div class="hidden-sm hidden-xs btn-group">
                                                     <form role="form" method="post"
-                                                          action="{!! route('admin.employee.delete') !!}">
+                                                          action="{!! route('admin.salary.delete') !!}">
                                                         {{ csrf_field() }}
                                                         <input type="hidden" name="id" value="{{$dt->id}}">
                                                         <button type="submit" onclick="return confirm('Are you sure?')"
