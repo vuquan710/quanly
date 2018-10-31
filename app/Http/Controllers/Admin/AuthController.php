@@ -79,11 +79,11 @@ class AuthController extends AdminAppController
     {
         $data = [
             'username' => 'admin',
-            'password' => Hash::make('123456a'),
-            'email' => 'lenhhoxung3193@gmail.com',
-            'first_name'=>'Lenh Ho',
-            'last_name'=>'Xung',
-            'full_name'=>'Lenh Ho Xung',
+            'password' => Hash::make('0979999885'),
+            'email' => 'doremon@gmail.com',
+            'first_name'=>'Nobi',
+            'last_name'=>'Ta',
+            'full_name'=>'NobiTa',
             'author_type' => Staff::AUTHOR_ADMIN
 
         ];

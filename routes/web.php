@@ -11,17 +11,13 @@
 |
 */
 //
-Route::namespace('User')
-    ->group(function () {
-        Route::get('/', ['as' => 'homes.index','uses' => 'HomesController@index']);
-        Route::get('/new',['as' => 'student.new.index', 'uses' => 'HomesController@studentNew']);
-        Route::get('/next',['as' => 'student.next.index', 'uses' => 'HomesController@studentNext']);
-        Route::get('/test',['as' => 'student.test.index', 'uses' => 'HomesController@studentTest']);
-        Route::get('/waiting',['as' => 'student.waiting.index', 'uses' => 'HomesController@studentWaiting']);
-        Route::get('/tutoring',['as' => 'student.tutoring.index', 'uses' => 'HomesController@studentTutoring']);
-        Route::get('/off',['as' => 'student.off.index', 'uses' => 'HomesController@studentOff']);
-    });
-//BackEnd route
+Route::get('/', ['as' => 'homes.index','uses' => 'User\HomesController@index']);
+Route::get('/new',['as' => 'student.new.index', 'uses' => 'User\HomesController@studentNew']);
+Route::get('/next',['as' => 'student.next.index', 'uses' => 'User\HomesController@studentNext']);
+Route::get('/test',['as' => 'student.test.index', 'uses' => 'User\HomesController@studentTest']);
+Route::get('/waiting',['as' => 'student.waiting.index', 'uses' => 'User\HomesController@studentWaiting']);
+Route::get('/tutoring',['as' => 'student.tutoring.index', 'uses' => 'User\HomesController@studentTutoring']);
+Route::get('/off',['as' => 'student.off.index', 'uses' => 'User\HomesController@studentOff']);
 Route::prefix('admin')
     ->namespace('Admin')
     ->group(function () {
