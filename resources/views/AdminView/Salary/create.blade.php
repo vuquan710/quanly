@@ -10,7 +10,7 @@
         <div class="main-content-inner">
             @include('AdminView.Share.breadcrumbs')
             <div class="page-content">
-                <form class="form-horizontal" role="form" action="{!! route('admin.employee.create') !!}"
+                <form class="form-horizontal" role="form" action="{!! route('admin.salary.create') !!}"
                       method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="Type" value="1">
@@ -18,48 +18,65 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Họ Tên </label>
 
                         <div class="col-sm-9">
-                            <input type="text" value="{{ isset($dt->Name) ? $dt->Name : '' }}" name="Name"
-                                   id="form-field-1" placeholder="Nobita" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ngày Sinh </label>
-
-                        <div class="col-sm-9">
-                            <input type="date" value="{{ isset($dt->Bod) ? $dt->Bod : '' }}" name="Bod"
-                                   id="form-field-1" placeholder="07/10/1995" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Trường Theo Học </label>
-
-                        <div class="col-sm-9">
-                            <input type="text" name="School"
-                                   id="form-field-1" placeholder="Đại Học University" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Quê Quán </label>
-
-                        <div class="col-sm-9">
-                            <input type="text" name="Country"
-                                   id="form-field-1" placeholder="Hà Nội" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Cấp Bậc </label>
-
-                        <div class="col-sm-9">
-                            <select class="col-xs-10 col-sm-5" id="form-field-1" name="Rank">
-                                <option value="0">Nhân viên hành chính</option>
-                                <option value="1">Giáo viên</option>
-                                <option value="2">Quản lý </option>
+                            <select class="col-xs-10 col-sm-5" id="form-field-1" name="EmployeeId">
+                                @if(isset($employee) && $employee->count()>0)
+                                    @foreach($employee as $key => $e)
+                                <option value="<?= $e->id ?>"><?= $e->Name?></option>
+                                    @endforeach
+                                @endif
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ngày Công </label>
+
+                        <div class="col-sm-9">
+                            <input type="text" name="Work" required
+                                   id="form-field-1" class="col-xs-10 col-sm-5 work"
+                                   onkeydown="Check(event);" onkeyup="Check(event);"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lương Cơ Bản </label>
+
+                        <div class="col-sm-9">
+                            <input type="text" name="Basic" required
+                                   id="form-field-1" class="col-xs-10 col-sm-5 basic"
+                                   onkeydown="Check(event);" onkeyup="Check(event);"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tháng </label>
+
+                        <div class="col-sm-9">
+                            <input type="month" name="Month" min="2018-03" value='<?php echo date('Y-m');?>'
+                                   id="form-field-1" class="col-xs-10 col-sm-5 basic"/>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Thưởng </label>
+
+                        <div class="col-sm-9">
+                            <input type="text" name="Bonus"
+                                   id="form-field-1" class="col-xs-10 col-sm-5 bonus"
+                                   onkeydown="Check(event);" onkeyup="Check(event);"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Thực Lĩnh </label>
+
+                        <div class="col-sm-9">
+                            <input type="text" name="Total" readonly
+                                   id="form-field-1" class="col-xs-10 col-sm-5 total"/>
                         </div>
                     </div>
 
@@ -80,5 +97,6 @@
 
         </div>
     </div><!-- /.main-content -->
+   
 
 @endsection

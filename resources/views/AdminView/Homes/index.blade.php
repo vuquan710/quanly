@@ -10,7 +10,7 @@
         <div class="main-content-inner">
             @include('AdminView.Share.breadcrumbs')
             <div class="page-content">
-                abc
+                Admin-View
             </div><!-- /.page-content -->
 
         </div>

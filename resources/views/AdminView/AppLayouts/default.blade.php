@@ -46,6 +46,49 @@
 <script src="{!! URL::asset('js/admin/ace-elements.min.js') !!}"></script>
 <script src="{!! URL::asset('js/admin/ace.min.js') !!}"></script>
 <script src="{!! URL::asset('js/common.js') !!}"></script>
+<script type="text/javascript">
+    function Check(e) {
+        var keyCode = (e.keyCode ? e.keyCode : e.which);
+        if (keyCode < 47 || keyCode > 58) {
+            e.preventDefault();
+        }
+    }
+    $(".basic").keyup(function (e) {
+        var basic = $('.basic').val();
+        var work = $('.work').val();
+        var bonus = $('.bonus').val();
+        if ( bonus > 0) {
+            basic = (work / 26) * basic + parseInt(bonus);
+        }else {
+            basic = (work / 26) * basic;
+        }
+        $('.total').val(basic);
+    });
+
+    $(".work").keyup(function () {
+        var basic = $('.basic').val();
+        var work = $('.work').val();
+        var bonus = $('.bonus').val();
+        if ( bonus > 0) {
+            basic = (work / 26) * basic + parseInt(bonus);
+        }else {
+            basic = (work / 26) * basic;
+        }
+        $('.total').val(basic);
+    });
+
+    $(".bonus").keyup(function () {
+        var basic = $('.basic').val();
+        var work = $('.work').val();
+        var bonus = $('.bonus').val();
+        if ( bonus > 0) {
+            basic = (work / 26) * basic + parseInt(bonus);
+        }else {
+            basic = (work / 26) * basic;
+        }
+        $('.total').val(basic);
+    });
+</script>
 @yield('script')
 </body>
 </html>

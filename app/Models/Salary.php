@@ -10,4 +10,6 @@ class Salary extends Model
     protected $fillable = [
         'EmployeeId', 'Name', 'Work', 'Basic', 'Bonus', 'Month'
     ];
+
+
 }

@@ -11,13 +11,15 @@
 |
 */
 //
+
 Route::get('/', ['as' => 'homes.index','uses' => 'User\HomesController@index']);
-Route::get('/new',['as' => 'student.new.index', 'uses' => 'User\HomesController@studentNew']);
-Route::get('/next',['as' => 'student.next.index', 'uses' => 'User\HomesController@studentNext']);
-Route::get('/test',['as' => 'student.test.index', 'uses' => 'User\HomesController@studentTest']);
-Route::get('/waiting',['as' => 'student.waiting.index', 'uses' => 'User\HomesController@studentWaiting']);
-Route::get('/tutoring',['as' => 'student.tutoring.index', 'uses' => 'User\HomesController@studentTutoring']);
-Route::get('/off',['as' => 'student.off.index', 'uses' => 'User\HomesController@studentOff']);
+        Route::get('/new',['as' => 'student.new.index', 'uses' => 'User\HomesController@studentNew']);
+        Route::get('/next',['as' => 'student.next.index', 'uses' => 'User\HomesController@studentNext']);
+        Route::get('/test',['as' => 'student.test.index', 'uses' => 'User\HomesController@studentTest']);
+        Route::get('/waiting',['as' => 'student.waiting.index', 'uses' => 'User\HomesController@studentWaiting']);
+        Route::get('/tutoring',['as' => 'student.tutoring.index', 'uses' => 'User\HomesController@studentTutoring']);
+        Route::get('/off',['as' => 'student.off.index', 'uses' => 'User\HomesController@studentOff']);
+//BackEnd route
 Route::prefix('admin')
     ->namespace('Admin')
     ->group(function () {
@@ -50,8 +52,8 @@ Route::prefix('admin')
 
                 Route::match(['get'], 'salary', ['as' => 'admin.salary.index', 'uses' => 'SalaryController@index']);
                 Route::match(['get', 'post'], 'salary/create', ['as' => 'admin.salary.create', 'uses' => 'SalaryController@create']);
-                Route::match(['get', 'post'], 'employee/update', ['as' => 'admin.employee.update', 'uses' => 'EmployeeController@update']);
-                Route::post('employee/delete',['as'=>'admin.employee.delete','uses'=>'EmployeeController@delete']);
+                Route::match(['get', 'post'], 'salary/update', ['as' => 'admin.salary.update', 'uses' => 'SalaryController@update']);
+                Route::post('salary/delete',['as'=>'admin.salary.delete','uses'=>'SalaryController@delete']);
 
                 Route::match(['get'], 'students', ['as' => 'admin.student.students.index', 'uses' => 'StudentController@index']);
                 Route::match(['get', 'post'], 'students/create', ['as' => 'admin.student.students.create', 'uses' => 'StudentController@create']);
