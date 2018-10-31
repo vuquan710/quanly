@@ -40,7 +40,7 @@ class SalaryController extends AdminAppController
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
             }
         }
-        dd(Employee::all());
-        return view($this->dirView . 'create');
+        $employee = Employee::all();
+        return view($this->dirView . 'create',['employee' => $employee]);
     }
 }

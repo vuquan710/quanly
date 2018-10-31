@@ -18,48 +18,50 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Họ Tên </label>
 
                         <div class="col-sm-9">
-                            <input type="text" value="{{ isset($dt->Name) ? $dt->Name : '' }}" name="Name"
-                                   id="form-field-1" placeholder="Nobita" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ngày Sinh </label>
-
-                        <div class="col-sm-9">
-                            <input type="date" value="{{ isset($dt->Bod) ? $dt->Bod : '' }}" name="Bod"
-                                   id="form-field-1" placeholder="07/10/1995" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Trường Theo Học </label>
-
-                        <div class="col-sm-9">
-                            <input type="text" name="School"
-                                   id="form-field-1" placeholder="Đại Học University" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Quê Quán </label>
-
-                        <div class="col-sm-9">
-                            <input type="text" name="Country"
-                                   id="form-field-1" placeholder="Hà Nội" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Cấp Bậc </label>
-
-                        <div class="col-sm-9">
-                            <select class="col-xs-10 col-sm-5" id="form-field-1" name="Rank">
-                                <option value="0">Nhân viên hành chính</option>
-                                <option value="1">Giáo viên</option>
-                                <option value="2">Quản lý </option>
+                            <select class="col-xs-10 col-sm-5" id="form-field-1" name="Name">
+                                @if(isset($employee) && $employee->count()>0)
+                                    @foreach($employee as $key => $e)
+                                <option value="<?= $e->id ?>"><?= $e->Name?></option>
+                                    @endforeach
+                                @endif
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ngày Công </label>
+
+                        <div class="col-sm-9">
+                            <input type="text" name="Work"
+                                   id="form-field-1" class="col-xs-10 col-sm-5"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lương Cơ Bản </label>
+
+                        <div class="col-sm-9">
+                            <input type="text" name="Basic"
+                                   id="form-field-1" class="col-xs-10 col-sm-5 basic"/>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Thưởng </label>
+
+                        <div class="col-sm-9">
+                            <input type="text" name="Bonus"
+                                   id="form-field-1" class="col-xs-10 col-sm-5"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Thực Lĩnh </label>
+
+                        <div class="col-sm-9">
+                            <input type="text" name="Total"
+                                   id="form-field-1" class="col-xs-10 col-sm-5"/>
                         </div>
                     </div>
 
@@ -80,5 +82,6 @@
 
         </div>
     </div><!-- /.main-content -->
+   
 
 @endsection

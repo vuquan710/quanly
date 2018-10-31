@@ -46,6 +46,11 @@
 <script src="{!! URL::asset('js/admin/ace-elements.min.js') !!}"></script>
 <script src="{!! URL::asset('js/admin/ace.min.js') !!}"></script>
 <script src="{!! URL::asset('js/common.js') !!}"></script>
+ <script type="text/javascript">
+       $(".basic").change(function() {
+          console.log( "Handler for .change() called." );
+        });
+    </script>
 @yield('script')
 </body>
 </html>
