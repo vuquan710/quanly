@@ -88,6 +88,16 @@
         }
         $('.total').val(basic);
     });
+
+    $( ".class-std" ).change(function() {
+        if (this.value == 1) {
+            $(".status").val(1);
+        }else {
+            $(".status").val(2);
+        }
+    });
+
+
 </script>
 @yield('script')
 </body>

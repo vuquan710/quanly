@@ -6,6 +6,7 @@ use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use App\Models\Students;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\DB;
 
 class RegisterNewController extends AdminAppController
 {
@@ -40,14 +41,20 @@ class RegisterNewController extends AdminAppController
                 echo 'Caught exception: ', $e->getMessage(), "\n";
             }
         }
-        return view($this->dirView . 'create');
+        $class = DB::table('lophoc')->get();
+        $level = DB::table('trinhdo')->get();
+        $lecture = DB::table('khoahoc')->get();
+        return view($this->dirView . 'create')->with(['class'=>$class,'level'=>$level,'lecture'=>$lecture]);
     }
 
     public function update(Request $request)
     {
         $data = Students::getOneNewCourse($request->id);
+        $class = DB::table('lophoc')->get();
+        $level = DB::table('trinhdo')->get();
+        $lecture = DB::table('khoahoc')->get();
         if ($request->isMethod('POST')) {
-            $student = Students::find($request->id);
+            $student = Students::where('id',$request->id)->first();
             $student->update($request->input());
             try {
                 $student->save();
@@ -56,7 +63,7 @@ class RegisterNewController extends AdminAppController
                 echo 'Caught exception: ', $e->getMessage(), "\n";
             }
         }
-        return view($this->dirView . 'update')->with(['data' => $data]);
+        return view($this->dirView . 'update')->with(['class'=>$class,'level'=>$level,'lecture'=>$lecture,'data'=>$data]);
     }
 
     public function delete(Request $request)
