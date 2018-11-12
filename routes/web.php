@@ -45,6 +45,22 @@ Route::prefix('admin')
                     ]
                 ]);
 
+                Route::match(['get'], 'class', ['as' => 'admin.class.index', 'uses' => 'ClassController@index']);
+                Route::match(['get', 'post'], 'class/create', ['as' => 'admin.class.create', 'uses' => 'ClassController@create']);
+                Route::match(['get', 'post'], 'class/update', ['as' => 'admin.class.update', 'uses' => 'ClassController@update']);
+                Route::post('class/delete',['as'=>'admin.class.delete','uses'=>'ClassController@delete']);
+
+                Route::match(['get'], 'course', ['as' => 'admin.course.index', 'uses' => 'CourseController@index']);
+                Route::match(['get', 'post'], 'course/create', ['as' => 'admin.course.create', 'uses' => 'CourseController@create']);
+                Route::match(['get', 'post'], 'course/update', ['as' => 'admin.course.update', 'uses' => 'CourseController@update']);
+                Route::post('course/delete',['as'=>'admin.course.delete','uses'=>'CourseController@delete']);
+
+                Route::match(['get'], 'level', ['as' => 'admin.level.index', 'uses' => 'LevelController@index']);
+                Route::match(['get', 'post'], 'level/create', ['as' => 'admin.level.create', 'uses' => 'LevelController@create']);
+                Route::match(['get', 'post'], 'level/update', ['as' => 'admin.level.update', 'uses' => 'LevelController@update']);
+                Route::post('level/delete',['as'=>'admin.level.delete','uses'=>'LevelController@delete']);
+
+
                 Route::match(['get'], 'employee', ['as' => 'admin.employee.index', 'uses' => 'EmployeeController@index']);
                 Route::match(['get', 'post'], 'employee/create', ['as' => 'admin.employee.create', 'uses' => 'EmployeeController@create']);
                 Route::match(['get', 'post'], 'employee/update', ['as' => 'admin.employee.update', 'uses' => 'EmployeeController@update']);

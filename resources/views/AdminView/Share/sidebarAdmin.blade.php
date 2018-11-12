@@ -35,6 +35,35 @@
                 </li>
             </ul>
         </li>
+
+        <li class="{{(strpos(\Route::current()->getName(),'admin.class.') !== false) || (strpos(\Route::current()->getName(),'admin.class.') !== false) ?"open active":"" }}">
+            <a href="{!! route('admin.class.index') !!}">
+                <i class="menu-icon fa fa-list-alt"></i>
+                <span class="menu-text">Danh Sách Lớp Học</span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+        </li>
+
+        <li class="{{(strpos(\Route::current()->getName(),'admin.course.') !== false) || (strpos(\Route::current()->getName(),'admin.course.') !== false) ?"open active":"" }}">
+            <a href="{!! route('admin.course.index') !!}">
+                <i class="menu-icon fa fa-list-alt"></i>
+                <span class="menu-text">Danh Sách Khóa Học</span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+        </li>
+
+        <li class="{{(strpos(\Route::current()->getName(),'admin.level.') !== false) || (strpos(\Route::current()->getName(),'admin.level.') !== false) ?"open active":"" }}">
+            <a href="{!! route('admin.level.index') !!}">
+                <i class="menu-icon fa fa-list-alt"></i>
+                <span class="menu-text">Danh Sách Trình Độ</span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+        </li>
+
+
         <li class="{{(strpos(\Route::current()->getName(), 'admin.student') !== false)?"open active":"" }}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-list-alt"></i>

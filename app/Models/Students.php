@@ -39,26 +39,26 @@ class Students extends Model
         return self::where('id', $id)->get();
     }
 
-    public static function getNextCourses($limit, $page, $key)
-    {
-        if ($key) {
-              return self::where('NgayDKT', '<>','NULL')
-                ->join('lophoc','lophoc.id','=','hocvien.Malop')
-                ->join('khoahoc','khoahoc.id','=','hocvien.MaKH')
-                ->where('TenHV', 'like', '%' . $key . '%')
-                ->orWhere('lophoc.TenLop', 'like', '%' . $key . '%')
-                ->orWhere('khoahoc.KhoaHoc', 'like', '%' . $key . '%')
-                ->paginate($limit, ['*'], 'page', $page);
-        }
-        return self::where('NgayDKT', '<>','NULL')
-            ->join('lophoc','lophoc.id','=','hocvien.Malop')
-            ->join('trinhdo','trinhdo.id','=','hocvien.MaTD')
-            ->join('khoahoc','khoahoc.id','=','hocvien.MaKH')
-            ->orderBy('hocvien.id','desc')
-            ->select('hocvien.*', 'lophoc.TenLop','khoahoc.Khoahoc','trinhdo.TenTD')
-            ->paginate($limit, ['*'], 'page', $page);
-    
-    }
+//    public static function getNextCourses($limit, $page, $key)
+//    {
+//        if ($key) {
+//              return self::where('NgayDKT', '<>','NULL')
+//                ->join('lophoc','lophoc.id','=','hocvien.Malop')
+//                ->join('khoahoc','khoahoc.id','=','hocvien.MaKH')
+//                ->where('TenHV', 'like', '%' . $key . '%')
+//                ->orWhere('lophoc.TenLop', 'like', '%' . $key . '%')
+//                ->orWhere('khoahoc.KhoaHoc', 'like', '%' . $key . '%')
+//                ->paginate($limit, ['*'], 'page', $page);
+//        }
+//        return self::where('NgayDKT', '<>','NULL')
+//            ->join('lophoc','lophoc.id','=','hocvien.Malop')
+//            ->join('trinhdo','trinhdo.id','=','hocvien.MaTD')
+//            ->join('khoahoc','khoahoc.id','=','hocvien.MaKH')
+//            ->orderBy('hocvien.id','desc')
+//            ->select('hocvien.*', 'lophoc.TenLop','khoahoc.Khoahoc','trinhdo.TenTD')
+//            ->paginate($limit, ['*'], 'page', $page);
+//
+//    }
 
 
     public static function getClassTest($limit, $page, $key)

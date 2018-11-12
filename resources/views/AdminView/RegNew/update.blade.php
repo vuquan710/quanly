@@ -21,7 +21,7 @@
                                     Tên </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" value="{{ isset($dt->TenHV) ? $dt->TenHV : '' }}" name="Name"
+                                    <input type="text" value="{{ isset($dt->TenHV) ? $dt->TenHV : '' }}" name="TenHV"
                                            id="form-field-1" class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
 
                                 <div class="col-sm-9">
                                     <input type="date" value="{{ isset($dt->Ngaysinh) ? $dt->Ngaysinh : '' }}"
-                                           name="Bod"
+                                           name="Ngaysinh"
                                            id="form-field-1" class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                                     Huynh </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" value="{{ isset($dt->TenPH) ? $dt->TenPH : '' }}" name="Parent"
+                                    <input type="text" value="{{ isset($dt->TenPH) ? $dt->TenPH : '' }}" name="TenPH"
                                            id="form-field-1" class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                                     Thoại </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" value="{{ isset($dt->Sdt) ? $dt->Sdt : '' }}" name="Phone"
+                                    <input type="text" value="{{ isset($dt->Sdt) ? $dt->Sdt : '' }}" name="Sdt"
                                            id="form-field-1" placeholder="01688587941" class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
 
                                 <div class="col-sm-9">
                                     <input type="text" value="{{ isset($dt->Fb) ? $dt->Fb : '' }}"
-                                           name="Facebook" id="form-field-1"
+                                           name="Fb" id="form-field-1"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
