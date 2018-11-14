@@ -15,15 +15,14 @@
                     {{ csrf_field() }}
                     @if(count($data) > 0)
                         @foreach($data as $dt)
-                            <input type="hidden" name="Type" value="4">
                             <input type="hidden" name="id" value="{{$dt->id}}">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Họ
                                     Tên </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" value="{{ isset($dt->Name) ? $dt->Name : '' }}" name="Name"
-                                           id="form-field-1" placeholder="Vũ Tùng Quân" class="col-xs-10 col-sm-5"/>
+                                    <input type="text" value="{{ isset($dt->TenHV) ? $dt->TenHV : '' }}" name="TenHV"
+                                           id="form-field-1" class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
 
@@ -32,8 +31,9 @@
                                     Sinh </label>
 
                                 <div class="col-sm-9">
-                                    <input type="date" value="{{ isset($dt->Bod) ? $dt->Bod : '' }}" name="Bod"
-                                           id="form-field-1" placeholder="07/10/1995" class="col-xs-10 col-sm-5"/>
+                                    <input type="date" value="{{ isset($dt->Ngaysinh) ? $dt->Ngaysinh : '' }}"
+                                           name="Ngaysinh"
+                                           id="form-field-1" class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
 
@@ -42,29 +42,8 @@
                                     Huynh </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" value="{{ isset($dt->Parent) ? $dt->Parent : '' }}" name="Parent"
-                                           id="form-field-1" placeholder="Vũ Văn Vũ" class="col-xs-10 col-sm-5"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Khóa
-                                    Học </label>
-
-                                <div class="col-sm-9">
-                                    <input type="text" value="{{ isset($dt->Course) ? $dt->Course : '' }}" name="Course"
-                                           id="form-field-1" placeholder="English" class="col-xs-10 col-sm-5"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lớp
-                                    Học </label>
-
-                                <div class="col-sm-9">
-                                    <input type="text" value="{{ isset($dt->ClassName) ? $dt->ClassName : '' }}"
-                                           name="ClassName" id="form-field-1" placeholder="Ielts 8.0"
-                                           class="col-xs-10 col-sm-5"/>
+                                    <input type="text" value="{{ isset($dt->TenPH) ? $dt->TenPH : '' }}" name="TenPH"
+                                           id="form-field-1" class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
 
@@ -73,7 +52,7 @@
                                     Thoại </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" value="{{ isset($dt->Phone) ? $dt->Phone : '' }}" name="Phone"
+                                    <input type="text" value="{{ isset($dt->Sdt) ? $dt->Sdt : '' }}" name="Sdt"
                                            id="form-field-1" placeholder="01688587941" class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -83,24 +62,39 @@
                                        for="form-field-1">Facebook </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" value="{{ isset($dt->Facebook) ? $dt->Facebook : '' }}"
-                                           name="Facebook" id="form-field-1" placeholder="Facebook"
+                                    <input type="text" value="{{ isset($dt->Fb) ? $dt->Fb : '' }}"
+                                           name="Fb" id="form-field-1"
                                            class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Ca
-                                    Học Mong Muốn </label>
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lớp
+                                    Học </label>
 
                                 <div class="col-sm-9">
-                                    <select class="col-xs-10 col-sm-5" id="form-field-1" name="Lecture">
-                                        @if(isset($dt->Lecture))
-                                            <option value="1" {{$dt->Lecture == 1 ? 'selected' : ''  }}>9h30 - 11h00
+                                    <select class="col-xs-10 col-sm-5 class-std" id="form-field-1" name="Malop">
+                                        @if(isset($class) && $class->count()>0)
+                                            @foreach($class as $key => $v)
+                                                <option value="<?= $v->id ?>" <?= $dt->Malop == $v->id ? 'selected' : '' ?>><?= $v->TenLop?></option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Ca
+                                    Học </label>
+
+                                <div class="col-sm-9">
+                                    <select class="col-xs-10 col-sm-5" id="form-field-1" name="Cahoc">
+                                        @if(isset($dt->Cahoc))
+                                            <option value="1" {{$dt->Cahoc == 1 ? 'selected' : ''  }}>9h30 - 11h00
                                             </option>
-                                            <option value="2" {{$dt->Lecture == 2 ? 'selected' : ''  }}>17h30 - 19h00
+                                            <option value="2" {{$dt->Cahoc == 2 ? 'selected' : ''  }}>17h30 - 19h00
                                             </option>
-                                            <option value="3" {{$dt->Lecture == 3 ? 'selected' : ''  }}>19h05 - 20h35
+                                            <option value="3" {{$dt->Cahoc == 3 ? 'selected' : ''  }}>19h05 - 20h35
                                             </option>
                                         @endif
                                     </select>
@@ -108,13 +102,43 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Ngày Đăng
-                                    Ký</label>
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Khóa
+                                    Học </label>
 
                                 <div class="col-sm-9">
-                                    <input type="date" value="{{ isset($dt->RegDate) ? $dt->RegDate :'' }}"
-                                           name="RegDate" id="form-field-1" placeholder="11/08/2018"
-                                           class="col-xs-10 col-sm-5"/>
+                                    <select class="col-xs-10 col-sm-5" id="form-field-1" name="MaKH">
+                                        @if(isset($lecture) && $lecture->count()>0)
+                                            @foreach($lecture as $key => $v)
+                                                <option value="<?= $v->id ?>" <?=$dt->MaKH == $v->id ? 'selected' : '' ?>><?= $v->Khoahoc?></option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Trình Độ </label>
+
+                                <div class="col-sm-9">
+                                    <select class="col-xs-10 col-sm-5" id="form-field-1" name="MaTD">
+                                        @if(isset($level) && $level->count()>0)
+                                            @foreach($level as $key => $v)
+                                                <option value="<?= $v->id ?>" <?=$dt->MaTD == $v->id ? 'selected' : '' ?>><?= $v->TenTD?></option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right status" for="form-field-1">Trạng Thái</label>
+
+                                <div class="col-sm-9">
+                                    <select class="col-xs-10 col-sm-5 status" id="form-field-1" name="Trangthai">
+                                        <option  value="1" <?= $dt->Trangthai == 1 ? 'selected' : '' ?> >Chờ Xếp Lớp</option>
+                                        <option  value="2" <?= $dt->Trangthai == 2 ? 'selected' : '' ?> >Đã Xếp Lớp</option>
+                                        <option  value="3">Nghỉ</option>
+                                    </select>
                                 </div>
                             </div>
                         @endforeach

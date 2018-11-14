@@ -135,10 +135,19 @@
 
                                 <div class="col-sm-9">
                                     <select class="col-xs-10 col-sm-5 status" id="form-field-1" name="Trangthai">
-                                        <option value="1" <?= $dt->Trangthai == 0 ? 'selected' : '' ?> >Chờ Xếp Lớp</option>
-                                        <option value="2" <?= $dt->Trangthai == 1 ? 'selected' : '' ?> >Đã Xếp Lớp</option>
-                                        <option value="3">Nghỉ</option>
+                                        <option value="1" <?= $dt->Trangthai == 1 ? 'selected' : '' ?> >Chờ Xếp Lớp</option>
+                                        <option value="2" <?= $dt->Trangthai == 2 ? 'selected' : '' ?> >Đã Xếp Lớp</option>
+                                        <option value="3" <?= $dt->Trangthai == 3 ? 'selected' : '' ?> >Nghỉ</option>
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="display: none">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Ngày Nghỉ</label>
+
+                                <div class="col-sm-9">
+                                    <input type="date" value="<?php echo date("Y-m-d"); ?>" name="NgayDKM" id="form-field-1"
+                                           placeholder="11/08/2018" class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
                         @endforeach

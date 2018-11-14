@@ -39,27 +39,6 @@ class Students extends Model
         return self::where('id', $id)->get();
     }
 
-//    public static function getNextCourses($limit, $page, $key)
-//    {
-//        if ($key) {
-//              return self::where('NgayDKT', '<>','NULL')
-//                ->join('lophoc','lophoc.id','=','hocvien.Malop')
-//                ->join('khoahoc','khoahoc.id','=','hocvien.MaKH')
-//                ->where('TenHV', 'like', '%' . $key . '%')
-//                ->orWhere('lophoc.TenLop', 'like', '%' . $key . '%')
-//                ->orWhere('khoahoc.KhoaHoc', 'like', '%' . $key . '%')
-//                ->paginate($limit, ['*'], 'page', $page);
-//        }
-//        return self::where('NgayDKT', '<>','NULL')
-//            ->join('lophoc','lophoc.id','=','hocvien.Malop')
-//            ->join('trinhdo','trinhdo.id','=','hocvien.MaTD')
-//            ->join('khoahoc','khoahoc.id','=','hocvien.MaKH')
-//            ->orderBy('hocvien.id','desc')
-//            ->select('hocvien.*', 'lophoc.TenLop','khoahoc.Khoahoc','trinhdo.TenTD')
-//            ->paginate($limit, ['*'], 'page', $page);
-//
-//    }
-
 
     public static function getClassTest($limit, $page, $key)
     {
@@ -74,13 +53,23 @@ class Students extends Model
     public static function getWaitingStudent($limit, $page, $key)
     {
         if ($key) {
-            return self::where('Type', 4)
-                ->where('Name', 'like', '%' . $key . '%')
-                ->orWhere('ClassName', 'like', '%' . $key . '%')
-                ->orWhere('Course', 'like', '%' . $key . '%')
+            return self::join('khoahoc','khoahoc.id','=','hocvien.MaKH')
+                ->join('trinhdo','trinhdo.id','=','hocvien.MaTD')
+                ->where('Trangthai', '=',1)
+                ->where(function ($query) use ($key) {
+                    $query->where('TenHV', 'like', '%' . $key . '%')
+                        ->orWhere('khoahoc.KhoaHoc', 'like', '%' . $key . '%');
+                })
+                ->select('hocvien.*','khoahoc.Khoahoc','trinhdo.TenTD')
                 ->paginate($limit, ['*'], 'page', $page);
         }
-        return self::where('Type', 4)->orderBy('id','desc')->paginate($limit, ['*'], 'page', $page);
+        return self::where('Trangthai', '=',1)
+            ->join('lophoc','lophoc.id','=','hocvien.Malop')
+            ->join('trinhdo','trinhdo.id','=','hocvien.MaTD')
+            ->join('khoahoc','khoahoc.id','=','hocvien.MaKH')
+            ->orderBy('hocvien.id','desc')
+            ->select('hocvien.*', 'lophoc.TenLop','khoahoc.Khoahoc','trinhdo.TenTD')
+            ->paginate($limit, ['*'], 'page', $page);
     }
 
     public static function getTutoring($limit, $page, $key)
@@ -99,12 +88,22 @@ class Students extends Model
     public static function getOffStudent($limit, $page, $key)
     {
         if ($key) {
-            return self::where('Type', 6)
-                ->where('Name', 'like', '%' . $key . '%')
-                ->orWhere('ClassName', 'like', '%' . $key . '%')
-                ->orWhere('Course', 'like', '%' . $key . '%')
+            return self::join('khoahoc','khoahoc.id','=','hocvien.MaKH')
+                ->join('trinhdo','trinhdo.id','=','hocvien.MaTD')
+                ->where('Trangthai', '=',3)
+                ->where(function ($query) use ($key) {
+                    $query->where('TenHV', 'like', '%' . $key . '%')
+                        ->orWhere('khoahoc.KhoaHoc', 'like', '%' . $key . '%');
+                })
+                ->select('hocvien.*','khoahoc.Khoahoc','trinhdo.TenTD')
                 ->paginate($limit, ['*'], 'page', $page);
         }
-        return self::where('Type', 6)->orderBy('id','desc')->paginate($limit, ['*'], 'page', $page);
+        return self::where('Trangthai', '=',3)
+            ->join('lophoc','lophoc.id','=','hocvien.Malop')
+            ->join('trinhdo','trinhdo.id','=','hocvien.MaTD')
+            ->join('khoahoc','khoahoc.id','=','hocvien.MaKH')
+            ->orderBy('hocvien.id','desc')
+            ->select('hocvien.*', 'lophoc.TenLop','khoahoc.Khoahoc','trinhdo.TenTD')
+            ->paginate($limit, ['*'], 'page', $page);
     }
 }

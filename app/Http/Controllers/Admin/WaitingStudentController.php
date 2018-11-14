@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Students;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WaitingStudentController extends AdminAppController
 {
@@ -25,33 +26,22 @@ class WaitingStudentController extends AdminAppController
         return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs,'dataSearch' => $key]);
     }
 
-    public function create (Request $request) {
-        if ($request->isMethod('POST')) {
-            $student = new Students();
-            $student->fill($request->input());
-            try {
-                $student->save();
-                return redirect()->route('admin.student.waiting.index');
-            } catch (Exception $e) {
-                echo 'Caught exception: ',  $e->getMessage(), "\n";
-            }
-        }
-        return view($this->dirView . 'create');
-    }
-
     public function update (Request $request){
         $data = Students::getOneNewCourse($request->id);
+        $class = DB::table('lophoc')->get();
+        $level = DB::table('trinhdo')->get();
+        $lecture = DB::table('khoahoc')->get();
         if ($request->isMethod('POST')) {
-            $student =  Students::find($request->id);
+            $student = Students::where('id',$request->id)->first();
             $student->update($request->input());
             try {
                 $student->save();
                 return redirect()->route('admin.student.waiting.index');
             } catch (Exception $e) {
-                echo 'Caught exception: ',  $e->getMessage(), "\n";
+                echo 'Caught exception: ', $e->getMessage(), "\n";
             }
         }
-        return view($this->dirView . 'update')->with(['data'=>$data]);
+        return view($this->dirView . 'update')->with(['class'=>$class,'level'=>$level,'lecture'=>$lecture,'data'=>$data]);
     }
 
     public function delete (Request $request) {

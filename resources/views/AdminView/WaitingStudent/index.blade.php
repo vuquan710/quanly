@@ -12,7 +12,7 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-md-12 col-lg-12">
-                        <div class="pull-right tableTools-container"  style="display: inline-flex">
+                        <div class="pull-right tableTools-container" style="display: inline-flex">
                             <form role="search">
                                 <span class="input-icon">
 									<input type="text" placeholder="Search ..." name="search"/>
@@ -41,17 +41,12 @@
                                     <th>Tên Phụ Huynh</th>
                                     <th>Số Điện Thoại</th>
                                     <th>Facebook</th>
+                                    <th>Ca Học</th>
                                     <th>Khóa Học</th>
-                                    <th>Lớp Học</th>
-                                    <th>Ca Học Mong Muốn</th>
-                                    <th>Trạng Thái Xếp Lớp</th>
+                                    <th>Trình Độ</th>
+                                    <th>Trạng Thái</th>
                                     <th>Ngày Đăng Ký</th>
-                                    <th><a style="width: 100%" href="{!! route('admin.student.waiting.create') !!}"
-                                           class="btn btn-success btn-bold">
-                                    <span>
-                                        <i class=" icon-only ace-icon ace-icon fa fa-plus bigger-110"></i>
-                                    </span>
-                                        </a>
+                                    <th width="7%">
                                     </th>
                                 </tr>
                                 </thead>
@@ -61,28 +56,29 @@
                                     @foreach($data as $key => $dt)
                                         <tr>
                                             <td>{{($key+1)+($data->currentPage()-1)*$data->perPage()}}</td>
-                                            <td>{{$dt->Name}}</td>
-                                            <td>{{$dt->Bod}}</td>
-                                            <td>{{$dt->Parent}}</td>
-                                            <td>{{$dt->Phone}}</td>
-                                            <td>{{$dt->Facebook}}</td>
-                                            <td>{{$dt->Course}}</td>
-                                            <td>{{$dt->ClassName}}</td>
-                                            @if($dt->Lecture == 1)
+                                            <td>{{$dt->TenHV}}</td>
+                                            <td>{{$dt->Ngaysinh}}</td>
+                                            <td>{{$dt->TenPH}}</td>
+                                            <td>{{$dt->Sdt}}</td>
+                                            <td>{{$dt->Fb}}</td>
+
+                                            @if($dt->Cahoc == 1)
                                                 <td>9h30 - 11h00</td>
-                                            @elseif ($dt->Lecture == 1)
+                                            @elseif ($dt->Cahoc == 2)
                                                 <td>17h30 - 19h00</td>
                                             @else
                                                 <td>19h05 - 20h35</td>
                                             @endif
-                                            <td>
-                                                @if($dt->ClassName == '')
-                                                    <span class="label label-sm label-warning">Waiting...</span>
-                                                @else
-                                                    <span class="label label-sm label-success">Confirm...</span>
-                                                @endif
-                                            </td>
-                                            <td>{{$dt->RegDate}}</td>
+                                            <td>{{$dt->Khoahoc }}</td>
+                                            <td>{{$dt->TenTD }}</td>
+                                            @if($dt->Trangthai == 3)
+                                                <td>Nghỉ</td>
+                                            @elseif ($dt->Trangthai == 2)
+                                                <td>Đã Xếp Lớp</td>
+                                            @else
+                                                <td>Chưa Xếp Lớp</td>
+                                            @endif
+                                            <td>{{$dt->NgayDKM}}</td>
                                             <td>
                                                 <div class="hidden-sm hidden-xs btn-group">
                                                     <a href="{!! route('admin.student.waiting.update',['id' => $dt->id]) !!}">
