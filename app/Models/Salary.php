@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Salary extends Model
 {
-    protected $table = 'salarys';
+    protected $table = 'luong';
     protected $fillable = [
-        'EmployeeId', 'Name', 'Work', 'Basic', 'Bonus', 'Month'
+       'MaNV', 'LuongCB', 'Thang', 'Thuong', 'Ngaycong', 'LuongTL', 'Trangthai'
     ];
+    public $timestamps = false;
 
 
 }

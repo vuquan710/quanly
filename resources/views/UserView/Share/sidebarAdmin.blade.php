@@ -35,26 +35,22 @@
                     <b class="arrow"></b>
                 </li>
 
-                <li class="{{(strpos(\Route::current()->getName(), 'student.next.index') !== false)?"active":"" }}">
-                    <a href="{!! route('student.next.index') !!}">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        Học Viên Đăng Ký Tiếp
-                    </a>
-                    <b class="arrow"></b>
-                </li>
 
-                <li class="{{(strpos(\Route::current()->getName(), 'student.test.index') !== false)?"active":"" }}">
-                    <a href="{!! route('student.test.index') !!}">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        Lớp Kiểm Tra Định Kỳ
-                    </a>
-                    <b class="arrow"></b>
-                </li>
 
                 <li class="{{(strpos(\Route::current()->getName(), 'student.waiting.index') !== false)?"active":"" }}">
                     <a href="{!! route('student.waiting.index') !!}">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Danh Sách Chờ Xếp Lớp
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+
+
+                <li class="{{(strpos(\Route::current()->getName(), 'student.off.index') !== false)?"active":"" }}">
+                    <a href="{!! route('student.off.index') !!}">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Danh Sách Học Viên Nghỉ
                     </a>
                     <b class="arrow"></b>
                 </li>
@@ -67,10 +63,11 @@
                     <b class="arrow"></b>
                 </li>
 
-                <li class="{{(strpos(\Route::current()->getName(), 'student.off.index') !== false)?"active":"" }}">
-                    <a href="{!! route('student.off.index') !!}">
+
+                <li class="{{(strpos(\Route::current()->getName(), 'student.test.index') !== false)?"active":"" }}">
+                    <a href="{!! route('student.test.index') !!}">
                         <i class="menu-icon fa fa-caret-right"></i>
-                        Danh Sách Học Viên Nghỉ
+                        Lớp Kiểm Tra Định Kỳ
                     </a>
                     <b class="arrow"></b>
                 </li>

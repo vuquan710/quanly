@@ -11,7 +11,7 @@ class Students extends Model
     protected $fillable = [
         'MaTD', 'TenHV', 'Ngaysinh', 'TenPH', 'Sdt', 'Fb',
         'Malop', 'Cahoc', 'MaKH', 'Ghichu',
-        'NgayKetKhoa', 'NgayDKT', 'NgayPD', 'NgayKT','NgayNghi','Trangthai'
+        'NgayKetKhoa', 'NgayDKM', 'NgayKT','NgayNghi','Trangthai'
     ];
 
     public static function  getNewCourses($limit, $page, $key)

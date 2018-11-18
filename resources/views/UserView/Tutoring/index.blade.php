@@ -34,8 +34,10 @@
                                     <th>Tên Phụ Huynh</th>
                                     <th>Số Điện Thoại</th>
                                     <th>Facebook</th>
-                                    <th>Trạng Thái</th>
-                                    <th>Buổi Nghỉ</th>
+                                    <th>Lớp Học</th>
+                                    <th>Khóa Học</th>
+                                    <th>Trình Độ</th>
+                                    <th>Thời Gian</th>
                                     <th>Ngày Phụ Đạo</th>
                                 </tr>
                                 </thead>
@@ -45,20 +47,22 @@
                                     @foreach($data as $key => $dt)
                                         <tr>
                                             <td>{{($key+1)+($data->currentPage()-1)*$data->perPage()}}</td>
-                                            <td>{{$dt->Name}}</td>
-                                            <td>{{$dt->Bod}}</td>
-                                            <td>{{$dt->Parent}}</td>
-                                            <td>{{$dt->Phone}}</td>
-                                            <td>{{$dt->Facebook}}</td>
-                                            <td>
-                                                @if($dt->Status == 1)
-                                                    <span class="label label-sm label-warning">Đến Học...</span>
-                                                @else
-                                                    <span class="label label-sm label-success">Không Đến Học...</span>
-                                                @endif
-                                            </td>
-                                            <td>{{$dt->RegDate}}</td>
-                                            <td>{{$dt->RegDateNew}}</td>
+                                            <td>{{$dt->TenHV}}</td>
+                                            <td>{{$dt->Ngaysinh}}</td>
+                                            <td>{{$dt->TenPH}}</td>
+                                            <td>{{$dt->Sdt}}</td>
+                                            <td>{{$dt->Fb}}</td>
+                                            <td>{{$dt->TenLop}}</td>
+                                            <td>{{$dt->Khoahoc }} Tháng</td>
+                                            <td>{{$dt->TenTD }}</td>
+                                            @if($dt->ThoiGian == 1)
+                                                <td>9h30 - 11h00</td>
+                                            @elseif ($dt->ThoiGian == 2)
+                                                <td>17h30 - 19h00</td>
+                                            @else
+                                                <td>19h05 - 20h35</td>
+                                            @endif
+                                            <td>{{$dt->NgayPD}}</td>
                                         </tr>
                                     @endforeach
                                 @endif

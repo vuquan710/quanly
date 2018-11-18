@@ -18,10 +18,10 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Họ Tên </label>
 
                         <div class="col-sm-9">
-                            <select class="col-xs-10 col-sm-5" id="form-field-1" name="EmployeeId">
+                            <select class="col-xs-10 col-sm-5" id="form-field-1" name="MaNV">
                                 @if(isset($employee) && $employee->count()>0)
                                     @foreach($employee as $key => $e)
-                                <option value="<?= $e->id ?>"><?= $e->Name?></option>
+                                <option value="<?= $e->id ?>"><?= $e->TenNV?></option>
                                     @endforeach
                                 @endif
                             </select>
@@ -32,7 +32,7 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ngày Công </label>
 
                         <div class="col-sm-9">
-                            <input type="text" name="Work" required
+                            <input type="text" name="Ngaycong" required
                                    id="form-field-1" class="col-xs-10 col-sm-5 work"
                                    onkeydown="Check(event);" onkeyup="Check(event);"
                             />
@@ -43,7 +43,7 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lương Cơ Bản </label>
 
                         <div class="col-sm-9">
-                            <input type="text" name="Basic" required
+                            <input type="text" name="LuongCB" required
                                    id="form-field-1" class="col-xs-10 col-sm-5 basic"
                                    onkeydown="Check(event);" onkeyup="Check(event);"
                             />
@@ -54,7 +54,7 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tháng </label>
 
                         <div class="col-sm-9">
-                            <input type="month" name="Month" min="2018-03" value='<?php echo date('Y-m');?>'
+                            <input type="month" name="Thang" min="2018-03" value='<?php echo date('Y-m');?>'
                                    id="form-field-1" class="col-xs-10 col-sm-5 basic"/>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Thưởng </label>
 
                         <div class="col-sm-9">
-                            <input type="text" name="Bonus"
+                            <input type="text" name="Thuong"
                                    id="form-field-1" class="col-xs-10 col-sm-5 bonus"
                                    onkeydown="Check(event);" onkeyup="Check(event);"
                             />
@@ -75,8 +75,19 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Thực Lĩnh </label>
 
                         <div class="col-sm-9">
-                            <input type="text" name="Total" readonly
+                            <input type="text" name="LuongTL" readonly
                                    id="form-field-1" class="col-xs-10 col-sm-5 total"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Trạng Thái </label>
+
+                        <div class="col-sm-9">
+                            <select class="col-xs-10 col-sm-5 status" id="form-field-1" name="Trangthai">
+                                <option value="1">Đã Nhận</option>
+                                <option value="2">Chưa Nhận</option>
+                            </select>
                         </div>
                     </div>
 

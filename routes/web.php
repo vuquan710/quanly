@@ -12,7 +12,7 @@
 */
 //
 
-Route::get('/', ['as' => 'homes.index','uses' => 'User\HomesController@index']);
+Route::get('/', ['as' => 'student.new.index','uses' => 'User\HomesController@studentNew']);
         Route::get('/new',['as' => 'student.new.index', 'uses' => 'User\HomesController@studentNew']);
         Route::get('/next',['as' => 'student.next.index', 'uses' => 'User\HomesController@studentNext']);
         Route::get('/test',['as' => 'student.test.index', 'uses' => 'User\HomesController@studentTest']);

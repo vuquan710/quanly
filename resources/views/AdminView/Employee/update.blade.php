@@ -22,7 +22,7 @@
                                     Tên </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" value="{{ isset($dt->Name) ? $dt->Name : '' }}" name="Name"
+                                    <input type="text" value="{{ isset($dt->TenNV) ? $dt->TenNV : '' }}" name="TenNV"
                                            id="form-field-1" placeholder="Vũ Tùng Quân" class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -32,26 +32,25 @@
                                     Sinh </label>
 
                                 <div class="col-sm-9">
-                                    <input type="date" value="{{ isset($dt->Bod) ? $dt->Bod : '' }}" name="Bod"
+                                    <input type="date" value="{{ isset($dt->Ngaysinh) ? $dt->Ngaysinh : '' }}" name="Ngaysinh"
                                            id="form-field-1" placeholder="07/10/1995" class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Trường Theo Học </label>
-
-                                <div class="col-sm-9">
-                                    <input type="text" name="School" value="{{ isset($dt->School) ? $dt->School : '' }}"
-                                           id="form-field-1" placeholder="Đại Học University" class="col-xs-10 col-sm-5"/>
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Quê Quán </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" name="Country" value="{{ isset($dt->Country) ? $dt->Country : '' }}"
+                                    <input type="text" name="Quequan" value="{{ isset($dt->Quequan) ? $dt->Quequan : '' }}"
+                                           id="form-field-1" placeholder="Hà Nội" class="col-xs-10 col-sm-5"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Bằng Cấp </label>
+
+                                <div class="col-sm-9">
+                                    <input type="text" name="Bangcap" value="{{ isset($dt->Bangcap) ? $dt->Bangcap : '' }}"
                                            id="form-field-1" placeholder="Hà Nội" class="col-xs-10 col-sm-5"/>
                                 </div>
                             </div>
@@ -60,10 +59,10 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Cấp Bậc </label>
 
                                 <div class="col-sm-9">
-                                    <select class="col-xs-10 col-sm-5" id="form-field-1" name="Rank">
-                                        <option value="0" {{ isset($dt->Rank) && $dt->Rank == 0  ? 'selected' : '' }} >Nhân viên hành chính</option>
-                                        <option value="1" {{ isset($dt->Rank) && $dt->Rank == 1  ? 'selected' : '' }} >Giáo viên</option>
-                                        <option value="2" {{ isset($dt->Rank) && $dt->Rank == 2  ? 'selected' : '' }} >Quản Lý</option>
+                                    <select class="col-xs-10 col-sm-5" id="form-field-1" name="Capbac">
+                                        <option value="0" {{ isset($dt->Capbac) && $dt->Capbac == 0  ? 'selected' : '' }} >Nhân viên hành chính</option>
+                                        <option value="1" {{ isset($dt->Capbac) && $dt->Capbac == 1  ? 'selected' : '' }} >Giáo viên</option>
+                                        <option value="2" {{ isset($dt->Capbac) && $dt->Capbac == 2  ? 'selected' : '' }} >Quản Lý</option>
                                     </select>
                                 </div>
                             </div>

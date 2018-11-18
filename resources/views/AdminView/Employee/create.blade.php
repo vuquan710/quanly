@@ -18,8 +18,8 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Họ Tên </label>
 
                         <div class="col-sm-9">
-                            <input type="text" value="{{ isset($dt->Name) ? $dt->Name : '' }}" name="Name"
-                                   id="form-field-1" placeholder="Nobita" class="col-xs-10 col-sm-5"/>
+                            <input type="text" name="TenNV"
+                                   id="form-field-1" class="col-xs-10 col-sm-5"/>
                         </div>
                     </div>
 
@@ -27,17 +27,9 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ngày Sinh </label>
 
                         <div class="col-sm-9">
-                            <input type="date" value="{{ isset($dt->Bod) ? $dt->Bod : '' }}" name="Bod"
-                                   id="form-field-1" placeholder="07/10/1995" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Trường Theo Học </label>
-
-                        <div class="col-sm-9">
-                            <input type="text" name="School"
-                                   id="form-field-1" placeholder="Đại Học University" class="col-xs-10 col-sm-5"/>
+                            <input type="date" name="Ngaysinh"
+                                   id="form-field-1"
+                                   class="col-xs-10 col-sm-5"/>
                         </div>
                     </div>
 
@@ -46,8 +38,17 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Quê Quán </label>
 
                         <div class="col-sm-9">
-                            <input type="text" name="Country"
-                                   id="form-field-1" placeholder="Hà Nội" class="col-xs-10 col-sm-5"/>
+                            <input type="text" name="Quequan"
+                                   id="form-field-1" class="col-xs-10 col-sm-5"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Bằng Cấp </label>
+
+                        <div class="col-sm-9">
+                            <input type="text" name="Bangcap"
+                                   id="form-field-1" class="col-xs-10 col-sm-5"/>
                         </div>
                     </div>
 
@@ -55,7 +56,7 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Cấp Bậc </label>
 
                         <div class="col-sm-9">
-                            <select class="col-xs-10 col-sm-5" id="form-field-1" name="Rank">
+                            <select class="col-xs-10 col-sm-5" id="form-field-1" name="Capbac">
                                 <option value="0">Nhân viên hành chính</option>
                                 <option value="1">Giáo viên</option>
                                 <option value="2">Quản lý </option>

@@ -2,7 +2,7 @@
     <ul class="breadcrumb">
         <li>
             <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="{!! route('homes.index') !!}">Home</a>
+            <a href="{!! route('student.new.index') !!}">Home</a>
         </li>
         <li class="active">{{ @$breadcrumbs }}</li>
     </ul><!-- /.breadcrumb -->

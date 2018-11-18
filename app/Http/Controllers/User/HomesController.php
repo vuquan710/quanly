@@ -9,6 +9,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Students;
+use App\Models\TutorModel;
+use App\Models\TestModel;
 use Illuminate\Http\Request;
 
 class HomesController extends AppUserController
@@ -65,9 +67,9 @@ class HomesController extends AppUserController
             $page = $request['page'];
         }
         $key = empty($request->search) ? "" : $request->search;
-        $data = Students::getClassTest($limit, $page, $key);
+        $data = TestModel::getListClassTest($limit,$page,$key);
         $breadcrumbs = "Danh Sách Các Lớp Kiểm Tra Định Kỳ";
-        return view($this->dirView . 'ClassTest.index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs, 'dataSearch' => $key]);
+        return view($this->dirView . 'ClassTest.index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs,'dataSearch' => $key]);
     }
 
     public function studentWaiting(Request $request)
@@ -97,9 +99,9 @@ class HomesController extends AppUserController
             $page = $request['page'];
         }
         $key = empty($request->search) ? "" : $request->search;
-        $data = Students::getTutoring($limit, $page, $key);
+        $data = TutorModel::getListTutor($limit,$page,$key);
         $breadcrumbs = "Danh Sách Học Phụ Đạo";
-        return view($this->dirView . 'Tutoring.index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs, 'dataSearch' => $key]);
+        return view($this->dirView . 'Tutoring.index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs,'dataSearch' => $key]);
     }
 
     public function studentOff(Request $request)

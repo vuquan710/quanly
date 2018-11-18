@@ -11,7 +11,7 @@
         </button>
 
         <div class="navbar-header pull-left">
-            <a href="{!! route('homes.index') !!}" class="navbar-brand">
+            <a href="{!! route('student.new.index') !!}" class="navbar-brand">
                 <small>
                     <i class="fa fa-leaf"></i>
                     PHẦN MỀM HỖ TRỢ QUẢN LÝ TRUNG TÂM ANH NGỮ DOREMON

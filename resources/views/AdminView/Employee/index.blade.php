@@ -12,30 +12,6 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-md-12 col-lg-12">
-                        <div class="pull-right tableTools-container">
-                            <div class="dt-buttons btn-overlap btn-group">
-                                <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold">
-                                    <span>
-                                        <i class=" icon-only ace-icon ace-icon fa fa-plus bigger-110"></i>
-                                        <span class="hidden">Show/hide columns</span>
-                                    </span>
-                                </a>
-                                <a class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-bold"
-                                   title="">
-                                    <span>
-                                        <i class="fa fa-cloud-download bigger-110 blue"></i>
-                                        <span class="hidden">Export to CSV</span>
-                                    </span>
-                                </a>
-                                <a class="dt-button buttons-print btn btn-white btn-primary btn-bold"
-                                   title="">
-                                    <span>
-                                        <i class="fa fa-print bigger-110 grey"></i>
-                                        <span class="hidden">Print</span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
 
                         <div class="pull-left">
                             @include('AdminView.Share.limit_default', ['paginator'=>$data, 'listOption' => \App\Http\Controllers\Admin\AdminAppController::$listOptionPaginate])
@@ -46,12 +22,12 @@
                                 <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Họ Tên</th>
+                                    <th>Tên Nhân Viên</th>
                                     <th>Ngáy Sinh</th>
-                                    <th>Trường Theo Học</th>
                                     <th>Quê Quán</th>
+                                    <th>Bằng Cấp</th>
                                     <th>Cấp Bậc</th>
-                                    <th>
+                                    <th width="7%">
                                         <a style="width: 100%" href="{!! route('admin.employee.create') !!}"
                                            class="btn btn-success btn-bold">
                                     <span>
@@ -67,11 +43,11 @@
                                     @foreach($data as $key => $dt)
                                         <tr>
                                             <td>{{($key+1)+($data->currentPage()-1)*$data->perPage()}}</td>
-                                            <td>{{$dt->Name}}</td>
-                                            <td>{{$dt->Bod}}</td>
-                                            <td>{{$dt->School}}</td>
-                                            <td>{{$dt->Country}}</td>
-                                            @if($dt->Rank == 2)
+                                            <td>{{$dt->TenNV}}</td>
+                                            <td>{{$dt->Ngaysinh}}</td>
+                                            <td>{{$dt->Quequan}}</td>
+                                            <td>{{$dt->Bangcap}}</td>
+                                            @if($dt->Capbac == 2)
                                                 <td>Quản Lý</td>
                                             @elseif ($dt->Rank == 1)
                                                 <td>Giáo Viên</td>

@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    protected $table = 'employees';
+    protected $table = 'nhanvien';
     protected $fillable = [
-        'Stt', 'Name', 'Country', 'School', 'Rank', 'Bod'
+        'TenNV', 'Ngaysinh', 'Quequan', 'Bangcap', 'Capbac'
     ];
+    public $timestamps = false;
 
     public static function listEmployee ($limit,$page) {
         return self::orderBy('id','desc')->paginate($limit, ['*'], 'page', $page);

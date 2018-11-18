@@ -62,7 +62,7 @@
         }else {
             basic = (work / 26) * basic;
         }
-        $('.total').val(basic);
+        $('.total').val(Math.ceil(basic));
     });
 
     $(".work").keyup(function () {
@@ -74,7 +74,7 @@
         }else {
             basic = (work / 26) * basic;
         }
-        $('.total').val(basic);
+        $('.total').val(Math.ceil(basic));
     });
 
     $(".bonus").keyup(function () {
@@ -86,7 +86,7 @@
         }else {
             basic = (work / 26) * basic;
         }
-        $('.total').val(basic);
+        $('.total').val(Math.ceil(basic));
     });
 
     $( ".class-std" ).change(function() {
@@ -106,6 +106,20 @@
             $(".off-std").prop('disabled', true);
         }
     });
+
+    $(".lecture").change(function () {
+        if (this.value > 0) {
+            $(".finish").css("display", "block");
+            var register = $(".register").val();
+            var date = new Date(register);
+            date.setMonth(date.getMonth() + $(".data-lecture-"+this.value).data("lecture"));
+            var finish = date.toLocaleDateString();
+            console.log(finish);
+            $(".finish-date").val(finish);
+        }else {
+            $(".finish").css("display", "none")
+        }
+    })
 
 
 </script>

@@ -25,10 +25,10 @@ class SalaryController extends AdminAppController
         if (!empty($request['page'])) {
             $page = $request['page'];
         }
-        $data = DB::table('salarys')
-            ->leftJoin('employees', 'employees.id', '=', 'salarys.EmployeeId')
-            ->select('salarys.id','employees.Name','salarys.Work','salarys.Basic','salarys.Bonus','salarys.Month')
-            ->orderBy('employees.Name')
+        $data = DB::table('luong')
+            ->leftJoin('nhanvien', 'nhanvien.id', '=', 'luong.MaNV')
+            ->select('luong.id','nhanvien.TenNV','luong.Ngaycong','luong.LuongCB','luong.Thuong','luong.Thang','luong.LuongTL','luong.Trangthai')
+            ->orderBy('nhanvien.TenNV')
             ->paginate($limit, ['*'], 'page', $page)
         ;
         $breadcrumbs = "Thông Tin Lương Nhân Viên";
@@ -51,12 +51,13 @@ class SalaryController extends AdminAppController
     }
 
     public function update (Request $request){
-        $data = DB::table('salarys')
-            ->leftJoin('employees', 'employees.id', '=', 'salarys.EmployeeId')
-            ->select('salarys.id','employees.Name','salarys.Work','salarys.Basic','salarys.Bonus','salarys.Month')
-            ->where('salarys.id','=',$request->id)
+        $data = DB::table('luong')
+            ->leftJoin('nhanvien', 'nhanvien.id', '=', 'luong.MaNV')
+            ->select('luong.id','nhanvien.TenNV','luong.Ngaycong','luong.LuongCB','luong.Thuong','luong.Thang','luong.LuongTL','luong.Trangthai')
+            ->where('luong.id','=',$request->id)
             ->get();
         ;
+        $employee = Employee::all();
         if ($request->isMethod('POST')) {
             $salary =  Salary::find($request->id);
             $salary->update($request->input());
@@ -67,7 +68,7 @@ class SalaryController extends AdminAppController
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
             }
         }
-        return view($this->dirView . 'update')->with(['data'=>$data]);
+        return view($this->dirView . 'update')->with(['data'=>$data,'employee' => $employee]);
     }
 
     public function delete (Request $request) {

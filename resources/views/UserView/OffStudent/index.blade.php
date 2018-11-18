@@ -27,29 +27,50 @@
                         <div class="table-responsive">
                             <table id="simple-table" class="table  table-bordered table-hover">
                                 <thead>
-                                <th>STT</th>
-                                <th>Họ Tên</th>
-                                <th>Ngáy Sinh</th>
-                                <th>Tên Phụ Huynh</th>
-                                <th>Số Điện Thoại</th>
-                                <th>Facebook</th>
-                                <th>Khóa Học</th>
-                                <th>Lớp Học</th>
-                                <th>Ngày Bắt Đầu Nghỉ</th>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Họ Tên</th>
+                                    <th>Ngáy Sinh</th>
+                                    <th>Tên Phụ Huynh</th>
+                                    <th>Số Điện Thoại</th>
+                                    <th>Facebook</th>
+                                    <th>Lớp Học</th>
+                                    <th>Ca Học</th>
+                                    <th>Khóa Học</th>
+                                    <th>Trình Độ</th>
+                                    <th>Trạng Thái</th>
+                                    <th>Ngày Nghỉ</th>
+                                    </th>
+                                </tr>
                                 </thead>
                                 <tbody>
                                 @if($data->count()>0)
                                     @foreach($data as $key => $dt)
                                         <tr>
                                             <td>{{($key+1)+($data->currentPage()-1)*$data->perPage()}}</td>
-                                            <td>{{$dt->Name}}</td>
-                                            <td>{{$dt->Bod}}</td>
-                                            <td>{{$dt->Parent}}</td>
-                                            <td>{{$dt->Phone}}</td>
-                                            <td>{{$dt->Facebook}}</td>
-                                            <td>{{$dt->Course}}</td>
-                                            <td>{{$dt->ClassName}}</td>
-                                            <td>{{$dt->RegDate}}</td>
+                                            <td>{{$dt->TenHV}}</td>
+                                            <td>{{$dt->Ngaysinh}}</td>
+                                            <td>{{$dt->TenPH}}</td>
+                                            <td>{{$dt->Sdt}}</td>
+                                            <td>{{$dt->Fb}}</td>
+                                            <td>{{$dt->TenLop}}</td>
+                                            @if($dt->Cahoc == 1)
+                                                <td>9h30 - 11h00</td>
+                                            @elseif ($dt->Cahoc == 2)
+                                                <td>17h30 - 19h00</td>
+                                            @else
+                                                <td>19h05 - 20h35</td>
+                                            @endif
+                                            <td>{{$dt->Khoahoc }} Tháng</td>
+                                            <td>{{$dt->TenTD }}</td>
+                                            @if($dt->Trangthai == 3)
+                                                <td>Nghỉ</td>
+                                            @elseif ($dt->Trangthai == 2)
+                                                <td>Đã Xếp Lớp</td>
+                                            @else
+                                                <td>Chưa Xếp Lớp</td>
+                                            @endif
+                                            <td>{{$dt->NgayNghi}}</td>
                                         </tr>
                                     @endforeach
                                 @endif

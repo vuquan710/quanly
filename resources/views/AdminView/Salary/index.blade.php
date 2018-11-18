@@ -52,6 +52,7 @@
                                     <th>Thưởng</th>
                                     <th>Thực Lĩnh</th>
                                     <th>Tháng</th>
+                                    <th>Trạng Thái</th>
                                     <th>
                                         <a style="width: 100%" href="{!! route('admin.salary.create') !!}"
                                            class="btn btn-success btn-bold">
@@ -68,14 +69,18 @@
                                     @foreach($data as $key => $dt)
                                         <tr>
                                             <td>{{($key+1)+($data->currentPage()-1)*$data->perPage()}}</td>
-                                            <td>{{$dt->Name}}</td>
-                                            <td>{{$dt->Work}}</td>
-                                            <td>{{$dt->Basic}}</td>
-                                            <td>{{$dt->Bonus}}</td>
-                                            <td>{{(($dt->Basic/26)*$dt->Work)+$dt->Bonus}}</td>
-                                            <td>{{$dt->Month}}</td>
-
-                                            <td>
+                                            <td>{{$dt->TenNV}}</td>
+                                            <td>{{$dt->Ngaycong}}</td>
+                                            <td>{{$dt->LuongCB}}</td>
+                                            <td>{{$dt->Thuong}}</td>
+                                            <td>{{$dt->LuongTL}}</td>
+                                            <td>{{$dt->Thang}}</td>
+                                            @if($dt->Trangthai == 1)
+                                                <td>Đã Nhận</td>
+                                            @else
+                                                <td>Chưa Nhận</td>
+                                            @endif
+                                            <td width="7%">
                                                 <div class="hidden-sm hidden-xs btn-group">
                                                     <a href="{!! route('admin.salary.update',['id' => $dt->id]) !!}">
                                                         <button class="btn btn-xs btn-info">

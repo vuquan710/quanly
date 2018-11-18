@@ -89,10 +89,11 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Khóa Học </label>
 
                         <div class="col-sm-9">
-                            <select class="col-xs-10 col-sm-5" id="form-field-1" name="MaKH">
+                            <select class="col-xs-10 col-sm-5 lecture" id="form-field-1" name="MaKH">
+                                <option></option>
                                 @if(isset($lecture) && $lecture->count()>0)
                                     @foreach($lecture as $key => $v)
-                                        <option value="<?= $v->id ?>"><?= $v->Khoahoc?> Tháng</option>
+                                        <option value="<?= $v->id ?>" class="data-lecture-<?= $v->id ?>" data-lecture="<?= $v->Khoahoc?>"><?= $v->Khoahoc?> Tháng</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -138,16 +139,16 @@
 
                         <div class="col-sm-9">
                             <input type="date" value="<?php echo date("Y-m-d"); ?>" name="NgayDKM" id="form-field-1"
-                                  class="col-xs-10 col-sm-5"/>
+                                  class="col-xs-10 col-sm-5 register"/>
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group finish" style="display: none">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Ngày Kết Khóa</label>
 
                         <div class="col-sm-9">
-                            <input type="date" value="<?php echo date("Y-m-d"); ?>" name="NgayKetKhoa" id="form-field-1"
-                                   class="col-xs-10 col-sm-5"/>
+                            <input readonly type="text" value="<?php echo date("Y-m-d"); ?>" name="NgayKetKhoa" id="form-field-1"
+                                   class="col-xs-10 col-sm-5 finish-date"/>
                         </div>
                     </div>
 
