@@ -20,12 +20,12 @@
 								</span>
                             </form>
 
-                            <form action="{!! route('admin.student.new.download')!!}" method="get">
-                                <button class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-bold">
-                                    <i class="fa fa-cloud-download bigger-110 blue"></i>
-                                    <span class="hidden">Export to CSV</span>
-                                </button>
-                            </form>
+                            {{--<form action="{!! route('admin.student.new.download')!!}" method="get">--}}
+                                {{--<button class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-bold">--}}
+                                    {{--<i class="fa fa-cloud-download bigger-110 blue"></i>--}}
+                                    {{--<span class="hidden">Export to CSV</span>--}}
+                                {{--</button>--}}
+                            {{--</form>--}}
                         </div>
                         <div class="pull-left">
                             @include('AdminView.Share.limit_default', ['paginator'=>$data, 'listOption' => \App\Http\Controllers\Admin\AdminAppController::$listOptionPaginate])
@@ -46,7 +46,7 @@
                                     <th>Khóa Học</th>
                                     <th>Trình Độ</th>
                                     <th>Trạng Thái</th>
-                                    <th>Ngày Đăng Ký</th>
+                                    <th>Ngày Nghỉ</th>
                                     <th width="7%">
                                     </th>
                                 </tr>
@@ -69,7 +69,7 @@
                                             @else
                                                 <td>19h05 - 20h35</td>
                                             @endif
-                                            <td>{{$dt->Khoahoc }}</td>
+                                            <td>{{$dt->Khoahoc }} Tháng</td>
                                             <td>{{$dt->TenTD }}</td>
                                             @if($dt->Trangthai == 3)
                                                 <td>Nghỉ</td>
@@ -78,7 +78,7 @@
                                             @else
                                                 <td>Chưa Xếp Lớp</td>
                                             @endif
-                                            <td>{{$dt->NgayDKM}}</td>
+                                            <td>{{$dt->NgayNghi}}</td>
                                             <td>
                                                 <div class="hidden-sm hidden-xs btn-group">
                                                     <a href="{!! route('admin.student.off.update',['id' => $dt->id]) !!}">

@@ -66,7 +66,7 @@
                 <li class="{{(strpos(\Route::current()->getName(), 'admin.course.index') !== false)?"active":"" }}">
                     <a href="{!! route('admin.course.index') !!}">
                         <i class="menu-icon fa fa-caret-right"></i>
-                        Danh Sách Lớp Học
+                        Danh Sách Khóa Học
                     </a>
                     <b class="arrow"></b>
                 </li>
@@ -77,7 +77,7 @@
         <li class="{{(strpos(\Route::current()->getName(),'admin.level.') !== false) || (strpos(\Route::current()->getName(),'admin.level.') !== false) ?"open active":"" }}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-list-alt"></i>
-                <span class="menu-text">Danh Sách Trình Độ</span>
+                <span class="menu-text">Quản Lý Trình Độ</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
@@ -85,7 +85,7 @@
                 <li class="{{(strpos(\Route::current()->getName(), 'admin.level.index') !== false)?"active":"" }}">
                     <a href="{!! route('admin.level.index') !!}">
                         <i class="menu-icon fa fa-caret-right"></i>
-                        Danh Sách Lớp Học
+                        Danh Sách Trình Độ
                     </a>
                     <b class="arrow"></b>
                 </li>

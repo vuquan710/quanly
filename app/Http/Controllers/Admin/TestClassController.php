@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Students;
+use App\Models\TestModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TestClassController extends AdminAppController
 {
@@ -20,14 +22,15 @@ class TestClassController extends AdminAppController
             $page = $request['page'];
         }
         $key = empty($request->search) ? "" : $request->search;
-        $data = Students::getClassTest($limit,$page,$key);
+        $data = TestModel::getListClassTest($limit,$page,$key);
         $breadcrumbs = "Danh Sách Các Lớp Kiểm Tra Định Kỳ";
         return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs,'dataSearch' => $key]);
     }
 
     public function create (Request $request) {
+        $class = DB::table('lophoc')->where('id','<>',1)->get();
         if ($request->isMethod('POST')) {
-            $student = new Students();
+            $student = new TestModel();
             $student->fill($request->input());
             try {
                 $student->save();
@@ -36,13 +39,14 @@ class TestClassController extends AdminAppController
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
             }
         }
-        return view($this->dirView . 'create');
+        return view($this->dirView . 'create')->with(['class'=>$class]);
     }
 
     public function update (Request $request){
-        $data = Students::getOneNewCourse($request->id);
+        $class = DB::table('lophoc')->where('id','<>',1)->get();
+        $data = TestModel::where('id', $request->id)->get();
         if ($request->isMethod('POST')) {
-            $student =  Students::find($request->id);
+            $student =  TestModel::find($request->id);
             $student->update($request->input());
             try {
                 $student->save();
@@ -51,12 +55,12 @@ class TestClassController extends AdminAppController
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
             }
         }
-        return view($this->dirView . 'update')->with(['data'=>$data]);
+        return view($this->dirView . 'update')->with(['data'=>$data,'class'=>$class]);
     }
 
     public function delete (Request $request) {
         if ($request->isMethod('POST')) {
-            $student =  Students::find($request->id);
+            $student =  TestModel::find($request->id);
             try {
                 $student->delete();
                 return redirect()->route('admin.student.test.index');

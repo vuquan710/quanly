@@ -37,7 +37,7 @@
                                 <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Tên Lớp</th>
+                                    <th>Khóa Học</th>
                                     <th width="7%">
                                         <a style="width: 100%" href="{!! route('admin.course.create') !!}"
                                            class="btn btn-success btn-bold">
@@ -54,7 +54,7 @@
                                     @foreach($data as $key => $dt)
                                         <tr>
                                             <td>{{($key+1)+($data->currentPage()-1)*$data->perPage()}}</td>
-                                            <td>{{$dt->Khoahoc}}</td>
+                                            <td>{{$dt->Khoahoc}} Tháng</td>
                                             <td>
                                                 <div class="hidden-sm hidden-xs btn-group">
                                                     <a href="{!! route('admin.course.update',['id' => $dt->id]) !!}">

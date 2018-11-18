@@ -13,79 +13,29 @@
                 <form class="form-horizontal" role="form" action="{!! route('admin.student.tutoring.create') !!}"
                       method="post">
                     {{ csrf_field() }}
-                    <input type="hidden" name="Type" value="5">
-                    <input type="hidden" name="Status" value="0">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Họ Tên </label>
-
-                        <div class="col-sm-9">
-                            <input type="text" value="{{ isset($dt->Name) ? $dt->Name : '' }}" name="Name"
-                                   id="form-field-1" placeholder="Nobita" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ngày Sinh </label>
-
-                        <div class="col-sm-9">
-                            <input type="date" value="{{ isset($dt->Bod) ? $dt->Bod : '' }}" name="Bod"
-                                   id="form-field-1" placeholder="07/10/1995" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tên Phụ
-                            Huynh </label>
-
-                        <div class="col-sm-9">
-                            <input type="text" value="{{ isset($dt->Parent) ? $dt->Parent : '' }}" name="Parent"
-                                   id="form-field-1" placeholder="Nobita" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Khóa Học </label>
-
-                        <div class="col-sm-9">
-                            <input type="text" value="{{ isset($dt->Course) ? $dt->Course : '' }}" name="Course"
-                                   id="form-field-1" placeholder="English" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lớp Học </label>
 
                         <div class="col-sm-9">
-                            <input type="text" value="{{ isset($dt->ClassName) ? $dt->ClassName : '' }}"
-                                   name="ClassName" id="form-field-1" placeholder="Ielts 8.0"
-                                   class="col-xs-10 col-sm-5"/>
+                            <select class="col-xs-10 col-sm-5 class-std" id="form-field-1" name="MaHV">
+                                @if(isset($student) && $student->count()>0)
+                                    @foreach($student as $key => $v)
+                                        <option value="<?= $v->id ?>"><?= $v->TenHV?></option>
+                                    @endforeach
+                                @endif
+                            </select>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Số Điện Thoại </label>
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Thời Gian </label>
 
                         <div class="col-sm-9">
-                            <input type="text" value="{{ isset($dt->Phone) ? $dt->Phone : '' }}" name="Phone"
-                                   id="form-field-1" placeholder="01688587941" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Facebook </label>
-
-                        <div class="col-sm-9">
-                            <input type="text" value="{{ isset($dt->Facebook) ? $dt->Facebook : '' }}" name="Facebook"
-                                   id="form-field-1" placeholder="Facebook" class="col-xs-10 col-sm-5"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Buổi Nghỉ</label>
-
-                        <div class="col-sm-9">
-                            <input type="date" value="<?php echo date("Y-m-d"); ?>" name="RegDate" id="form-field-1"
-                                   placeholder="11/08/2018" class="col-xs-10 col-sm-5"/>
+                            <select class="col-xs-10 col-sm-5" id="form-field-1" name="ThoiGian">
+                                <option value="1">9h30 - 11h00</option>
+                                <option value="2">17h30 - 19h00</option>
+                                <option value="3">19h05 - 20h35</option>
+                            </select>
                         </div>
                     </div>
 
@@ -93,8 +43,8 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Ngày Phụ Đạo</label>
 
                         <div class="col-sm-9">
-                            <input type="date" value="<?php echo date("Y-m-d"); ?>" name="RegDateNew" id="form-field-1"
-                                   placeholder="11/08/2018" class="col-xs-10 col-sm-5"/>
+                            <input type="date" value="<?php echo date("Y-m-d"); ?>" name="NgayPD" id="form-field-1"
+                                   class="col-xs-10 col-sm-5"/>
                         </div>
                     </div>
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Students;
 use Illuminate\Http\Request;
+use App\Models\TutorModel;
+use Illuminate\Support\Facades\DB;
 
 class TutoringStudentController extends AdminAppController
 {
@@ -19,14 +21,15 @@ class TutoringStudentController extends AdminAppController
             $page = $request['page'];
         }
         $key = empty($request->search) ? "" : $request->search;
-        $data = Students::getTutoring($limit,$page,$key);
+        $data = TutorModel::getListTutor($limit,$page,$key);
         $breadcrumbs = "Danh Sách Học Phụ Đạo";
         return view($this->dirView . 'index')->with(['data' => $data, 'breadcrumbs' => $breadcrumbs,'dataSearch' => $key]);
     }
 
     public function create (Request $request) {
+        $student = DB::table('hocvien')->get();
         if ($request->isMethod('POST')) {
-            $student = new Students();
+            $student = new TutorModel();
             $student->fill($request->input());
             try {
                 $student->save();
@@ -35,13 +38,14 @@ class TutoringStudentController extends AdminAppController
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
             }
         }
-        return view($this->dirView . 'create');
+        return view($this->dirView . 'create')->with(['student'=>$student]);
     }
 
     public function update (Request $request){
-        $data = Students::getOneNewCourse($request->id);
+        $student = DB::table('hocvien')->get();
+        $data = TutorModel::where('id', $request->id)->get();
         if ($request->isMethod('POST')) {
-            $student =  Students::find($request->id);
+            $student =  TutorModel::find($request->id);
             $student->update($request->input());
             try {
                 $student->save();
@@ -50,12 +54,12 @@ class TutoringStudentController extends AdminAppController
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
             }
         }
-        return view($this->dirView . 'update')->with(['data'=>$data]);
+        return view($this->dirView . 'update')->with(['data'=>$data,'student'=>$student]);
     }
 
     public function delete (Request $request) {
         if ($request->isMethod('POST')) {
-            $student =  Students::find($request->id);
+            $student =  TutorModel::find($request->id);
             try {
                 $student->delete();
                 return redirect()->route('admin.student.tutoring.index');

@@ -109,7 +109,7 @@
                                     <select class="col-xs-10 col-sm-5" id="form-field-1" name="MaKH">
                                         @if(isset($lecture) && $lecture->count()>0)
                                             @foreach($lecture as $key => $v)
-                                                <option value="<?= $v->id ?>" <?=$dt->MaKH == $v->id ? 'selected' : '' ?>><?= $v->Khoahoc?></option>
+                                                <option value="<?= $v->id ?>" <?=$dt->MaKH == $v->id ? 'selected' : '' ?>><?= $v->Khoahoc?> Tháng</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -142,12 +142,12 @@
                                 </div>
                             </div>
 
-                            <div class="form-group" style="display: none">
+                            <div class="form-group off"style="display:<?= $dt->Trangthai == 3 ? ''  : 'none' ?> ">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Ngày Nghỉ</label>
 
                                 <div class="col-sm-9">
-                                    <input type="date" value="<?php echo date("Y-m-d"); ?>" name="NgayDKM" id="form-field-1"
-                                           placeholder="11/08/2018" class="col-xs-10 col-sm-5"/>
+                                    <input type="date" value="<?= $dt->NgayNghi != '' ? $dt->NgayNghi :  date("Y-m-d"); ?>" name="NgayNghi" id="form-field-1"
+                                           class="col-xs-10 col-sm-5 off-std"/>
                                 </div>
                             </div>
                         @endforeach

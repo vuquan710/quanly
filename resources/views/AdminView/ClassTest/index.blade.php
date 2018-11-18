@@ -1,6 +1,6 @@
 @extends('AdminView.AppLayouts.default')
 
-@section('title', __('Dashboard'))
+@section('title', __('Doremon'))
 
 @section('sidebar')
 @endsection
@@ -19,13 +19,6 @@
 									<i class="ace-icon fa fa-search nav-search-icon"></i>
 								</span>
                             </form>
-
-                            <form action="{!! route('admin.student.new.download')!!}" method="get">
-                                <button class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-bold">
-                                    <i class="fa fa-cloud-download bigger-110 blue"></i>
-                                    <span class="hidden">Export to CSV</span>
-                                </button>
-                            </form>
                         </div>
                         <div class="pull-left">
                             @include('AdminView.Share.limit_default', ['paginator'=>$data, 'listOption' => \App\Http\Controllers\Admin\AdminAppController::$listOptionPaginate])
@@ -39,8 +32,7 @@
                                     <th>Tên Lớp</th>
                                     <th>Ngày Kiểm Tra</th>
                                     <th>Thời Gian</th>
-                                    <th>Số Học Viên</th>
-                                    <th>
+                                    <th width="7%">
                                         <a style="width: 100%" href="{!! route('admin.student.test.create') !!}"
                                            class="btn btn-success btn-bold">
                                     <span>
@@ -56,16 +48,15 @@
                                     @foreach($data as $key=> $dt)
                                         <tr>
                                             <td>{{($key+1)+($data->currentPage()-1)*$data->perPage()}}</td>
-                                            <td>{{$dt->ClassName}}</td>
-                                            <td>{{$dt->RegDate}}</td>
-                                            @if($dt->Lecture == 1)
+                                            <td>{{$dt->TenLop}}</td>
+                                            <td>{{$dt->NgayKT}}</td>
+                                            @if($dt->ThoiGian == 1)
                                                 <td>9h30 - 11h00</td>
-                                            @elseif ($dt->Lecture == 1)
+                                            @elseif ($dt->ThoiGian == 2)
                                                 <td>17h30 - 19h00</td>
                                             @else
                                                 <td>19h05 - 20h35</td>
                                             @endif
-                                            <td>{{$dt->Status}}</td>
                                             <td>
                                                 <div class="hidden-sm hidden-xs btn-group">
                                                     <a href="{!! route('admin.student.test.update',['id' => $dt->id]) !!}">

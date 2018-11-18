@@ -92,7 +92,7 @@
                             <select class="col-xs-10 col-sm-5" id="form-field-1" name="MaKH">
                                 @if(isset($lecture) && $lecture->count()>0)
                                     @foreach($lecture as $key => $v)
-                                        <option value="<?= $v->id ?>"><?= $v->Khoahoc?></option>
+                                        <option value="<?= $v->id ?>"><?= $v->Khoahoc?> Tháng</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -138,7 +138,16 @@
 
                         <div class="col-sm-9">
                             <input type="date" value="<?php echo date("Y-m-d"); ?>" name="NgayDKM" id="form-field-1"
-                                   placeholder="11/08/2018" class="col-xs-10 col-sm-5"/>
+                                  class="col-xs-10 col-sm-5"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Ngày Kết Khóa</label>
+
+                        <div class="col-sm-9">
+                            <input type="date" value="<?php echo date("Y-m-d"); ?>" name="NgayKetKhoa" id="form-field-1"
+                                   class="col-xs-10 col-sm-5"/>
                         </div>
                     </div>
 

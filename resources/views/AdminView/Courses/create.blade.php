@@ -14,10 +14,10 @@
                       method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tên Khóa Học </label>
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Khóa Học </label>
 
                         <div class="col-sm-9">
-                            <input type="text" name="Khoahoc" required
+                            <input type="number" name="Khoahoc" required
                                    id="form-field-1" class="col-xs-10 col-sm-5"/>
                         </div>
                     </div>

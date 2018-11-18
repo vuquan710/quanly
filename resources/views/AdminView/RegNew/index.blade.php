@@ -20,12 +20,12 @@
 								</span>
                             </form>
 
-                            <form action="{!! route('admin.student.new.download')!!}" method="get">
-                                 <button class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-bold">
-                                        <i class="fa fa-cloud-download bigger-110 blue"></i>
-                                        <span class="hidden">Export to CSV</span>
-                                 </button>
-                            </form>
+                            {{--<form action="{!! route('admin.student.new.download')!!}" method="get">--}}
+                                 {{--<button class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-bold">--}}
+                                        {{--<i class="fa fa-cloud-download bigger-110 blue"></i>--}}
+                                        {{--<span class="hidden">Export to CSV</span>--}}
+                                 {{--</button>--}}
+                            {{--</form>--}}
                         </div>
 
                         <div class="pull-left">
@@ -48,6 +48,7 @@
                                     <th>Trình Độ</th>
                                     <th>Trạng Thái</th>
                                     <th>Ngày Đăng Ký</th>
+                                    <th>Ngày Kết Khóa</th>
                                     <th width="7%">
                                         <a style="width: 100%" href="{!! route('admin.student.new.create') !!}"
                                            class="btn btn-success btn-bold">
@@ -78,7 +79,7 @@
                                             @else
                                                 <td>19h05 - 20h35</td>
                                             @endif
-                                            <td>{{$dt->Khoahoc }}</td>
+                                            <td>{{$dt->Khoahoc }} Tháng</td>
                                             <td>{{$dt->TenTD }}</td>
                                             @if($dt->Trangthai == 3)
                                                 <td>Nghỉ</td>
@@ -88,6 +89,7 @@
                                                 <td>Chưa Xếp Lớp</td>
                                             @endif
                                             <td>{{$dt->NgayDKM}}</td>
+                                            <td>{{$dt->NgayKetKhoa}}</td>
                                             <td>
                                                 <div class="hidden-sm hidden-xs btn-group">
                                                     <a href="{!! route('admin.student.new.update',['id' => $dt->id]) !!}">

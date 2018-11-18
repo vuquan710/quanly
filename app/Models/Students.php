@@ -11,7 +11,7 @@ class Students extends Model
     protected $fillable = [
         'MaTD', 'TenHV', 'Ngaysinh', 'TenPH', 'Sdt', 'Fb',
         'Malop', 'Cahoc', 'MaKH', 'Ghichu',
-        'NgayDKM', 'NgayDKT', 'NgayPD', 'NgayKT','NgayNghi','Trangthai'
+        'NgayKetKhoa', 'NgayDKT', 'NgayPD', 'NgayKT','NgayNghi','Trangthai'
     ];
 
     public static function  getNewCourses($limit, $page, $key)
@@ -20,9 +20,11 @@ class Students extends Model
             return self::where('NgayDKM', '<>','NULL')
                 ->join('lophoc','lophoc.id','=','hocvien.Malop')
                 ->join('khoahoc','khoahoc.id','=','hocvien.MaKH')
-                ->where('TenHV', 'like', '%' . $key . '%')
-                ->orWhere('lophoc.TenLop', 'like', '%' . $key . '%')
-                ->orWhere('khoahoc.KhoaHoc', 'like', '%' . $key . '%')
+                ->where(function ($query) use ($key) {
+                    $query->where('TenHV', 'like', '%' . $key . '%')
+                        ->orWhere('lophoc.TenLop', 'like', '%' . $key . '%')
+                        ->orWhere('khoahoc.KhoaHoc', 'like', '%' . $key . '%');
+                })
                 ->paginate($limit, ['*'], 'page', $page);
         }
         return self::where('NgayDKM', '<>','NULL')
@@ -74,15 +76,22 @@ class Students extends Model
 
     public static function getTutoring($limit, $page, $key)
     {
-        if ($key) {
-            return self::where('Type', 5)
-                ->where('Name', 'like', '%' . $key . '%')
-                ->orWhere('ClassName', 'like', '%' . $key . '%')
-                ->orWhere('Course', 'like', '%' . $key . '%')
-
-                ->paginate($limit, ['*'], 'page', $page);
-        }
-        return self::where('Type', 5)->orderBy('id','desc')->paginate($limit, ['*'], 'page', $page);
+        return self::join('khoahoc','khoahoc.id','=','hocvien.MaKH')
+            ->join('trinhdo','trinhdo.id','=','hocvien.MaTD')
+            ->where('Trangthai', '=',1)
+            ->where(function ($query) use ($key) {
+                $query->where('TenHV', 'like', '%' . $key . '%')
+                    ->orWhere('khoahoc.KhoaHoc', 'like', '%' . $key . '%');
+            })
+            ->select('hocvien.*','khoahoc.Khoahoc','trinhdo.TenTD')
+            ->paginate($limit, ['*'], 'page', $page);
+        return self::where('Trangthai', '=',1)
+            ->join('lophoc','lophoc.id','=','hocvien.Malop')
+            ->join('trinhdo','trinhdo.id','=','hocvien.MaTD')
+            ->join('khoahoc','khoahoc.id','=','hocvien.MaKH')
+            ->orderBy('hocvien.id','desc')
+            ->select('hocvien.*', 'lophoc.TenLop','khoahoc.Khoahoc','trinhdo.TenTD')
+            ->paginate($limit, ['*'], 'page', $page);
     }
 
     public static function getOffStudent($limit, $page, $key)

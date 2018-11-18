@@ -1,6 +1,6 @@
 @extends('AdminView.AppLayouts.default')
 
-@section('title', __('Dashboard'))
+@section('title', __('Doremon'))
 
 @section('sidebar')
 @endsection

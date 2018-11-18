@@ -97,6 +97,16 @@
         }
     });
 
+    $( ".status" ).change(function() {
+        if (this.value == 3) {
+            $(".off").css("display", "block");
+            $(".off-std").prop('disabled', false);
+        }else {
+            $(".off").css("display", "none");
+            $(".off-std").prop('disabled', true);
+        }
+    });
+
 
 </script>
 @yield('script')

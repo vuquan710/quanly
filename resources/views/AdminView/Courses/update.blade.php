@@ -16,13 +16,13 @@
                         @foreach($data as $dt)
                             <input type="hidden" name="id" value="{{$dt->id}}">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Họ
-                                    Tên </label>
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Khóa Học </label>
 
                                 <div class="col-sm-9">
                                     <input type="text" value="{{ isset($dt->Khoahoc) ? $dt->Khoahoc : '' }}" name="Khoahoc"
                                            id="form-field-1" class="col-xs-10 col-sm-5"/>
                                 </div>
+
                             </div>
                         @endforeach
                     <div class="clearfix form-actions">

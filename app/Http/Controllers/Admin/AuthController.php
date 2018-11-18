@@ -55,7 +55,7 @@ class AuthController extends AdminAppController
                 if (Cache::has($request->ip())) {
                     Cache::forget($request->ip());
                 }
-                return redirect()->route('admin.homes.index');
+                return redirect()->route('admin.student.new.index');
             } else {
                 return redirect()->route('admin.auth.login')->withErrors(['Login fails!'])
                     ->withInput();
