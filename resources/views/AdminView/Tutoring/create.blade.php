@@ -10,11 +10,12 @@
         <div class="main-content-inner">
             @include('AdminView.Share.breadcrumbs')
             <div class="page-content">
+
                 <form class="form-horizontal" role="form" action="{!! route('admin.student.tutoring.create') !!}"
                       method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Lớp Học </label>
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tên Học Sinh </label>
 
                         <div class="col-sm-9">
                             <select class="col-xs-10 col-sm-5 class-std" id="form-field-1" name="MaHV">

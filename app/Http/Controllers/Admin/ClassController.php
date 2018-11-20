@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ClassModel;
+use function PHPSTORM_META\elementType;
 
 class ClassController extends AdminAppController
 {
@@ -30,13 +31,19 @@ class ClassController extends AdminAppController
     public function create(Request $request)
     {
         if ($request->isMethod('POST')) {
-            $student = new ClassModel();
-            $student->fill($request->input());
-            try {
-                $student->save();
-                return redirect()->route('admin.class.index');
-            } catch (Exception $e) {
-                echo 'Caught exception: ', $e->getMessage(), "\n";
+            $findStudent = ClassModel::where('TenLop','=',$request->TenLop)->first();
+            $error = 'Tên Lớp Đã Tồn Tại, Vui Lòng Nhập Tên Khác';
+            if ($findStudent) {
+                return view($this->dirView . 'create')->with(['error'=>$error]);
+            }else {
+                $student = new ClassModel();
+                $student->fill($request->input());
+                try {
+                    $student->save();
+                    return redirect()->route('admin.class.index');
+                } catch (Exception $e) {
+                    echo 'Caught exception: ', $e->getMessage(), "\n";
+                }
             }
         }
         return view($this->dirView . 'create');
