@@ -10,9 +10,9 @@
         <div class="main-content-inner">
             @include('AdminView.Share.breadcrumbs')
             <div class="page-content">
-                @if($error)
+                @if(isset($error))
                 <div class="alert alert-danger">
-                    <?= $error?>    
+                    <?= $error?>
                 </div>
                 @endif
                 <form class="form-horizontal" role="form" action="{!! route('admin.class.create') !!}"
