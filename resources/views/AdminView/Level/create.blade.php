@@ -10,6 +10,11 @@
         <div class="main-content-inner">
             @include('AdminView.Share.breadcrumbs')
             <div class="page-content">
+                @if(isset($error))
+                    <div class="alert alert-danger">
+                        <?= $error?>
+                    </div>
+                @endif
                 <form class="form-horizontal" role="form" action="{!! route('admin.level.create') !!}"
                       method="post">
                     {{ csrf_field() }}

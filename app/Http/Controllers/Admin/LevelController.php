@@ -29,6 +29,11 @@ class LevelController extends AdminAppController
     public function create(Request $request)
     {
         if ($request->isMethod('POST')) {
+            $findStudent = Levels::where('TenTD','=',$request->TenTD)->first();
+            $error = 'Tên Trình Độ Đã Tồn Tại, Vui Lòng Nhập Tên Khác';
+            if ($findStudent) {
+                return view($this->dirView . 'create')->with(['error'=>$error]);
+            }
             $student = new Levels();
             $student->fill($request->input());
             try {

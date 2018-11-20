@@ -10,6 +10,11 @@
         <div class="main-content-inner">
             @include('AdminView.Share.breadcrumbs')
             <div class="page-content">
+                @if(isset($error))
+                    <div class="alert alert-danger">
+                        <?= $error?>
+                    </div>
+                @endif
                 <form class="form-horizontal" role="form" action="{!! route('admin.course.create') !!}"
                       method="post">
                     {{ csrf_field() }}
@@ -17,7 +22,7 @@
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Khóa Học </label>
 
                         <div class="col-sm-9">
-                            <input type="number" name="Khoahoc" required
+                            <input type="number" name="Khoahoc" required  min="1" max="12"
                                    id="form-field-1" class="col-xs-10 col-sm-5"/>
                         </div>
                     </div>

@@ -29,6 +29,11 @@ class CourseController extends AdminAppController
     public function create(Request $request)
     {
         if ($request->isMethod('POST')) {
+            $findStudent = Courses::where('Khoahoc','=',$request->Khoahoc)->first();
+            $error = 'Tên Khóa Học Đã Tồn Tại, Vui Lòng Nhập Tên Khác';
+            if ($findStudent) {
+                return view($this->dirView . 'create')->with(['error'=>$error]);
+            }
             $student = new Courses();
             $student->fill($request->input());
             try {
