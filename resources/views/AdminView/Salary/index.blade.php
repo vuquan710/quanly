@@ -80,7 +80,7 @@
                                             @else
                                                 <td>Chưa Nhận</td>
                                             @endif
-                                            <td width="7%">
+                                            <td width="8%">
                                                 <div class="hidden-sm hidden-xs btn-group">
                                                     <a href="{!! route('admin.salary.update',['id' => $dt->id]) !!}">
                                                         <button class="btn btn-xs btn-info">

@@ -47,7 +47,7 @@
                                     <th>Trình Độ</th>
                                     <th>Trạng Thái</th>
                                     <th>Ngày Nghỉ</th>
-                                    <th width="7%">
+                                    <th width="8%">
                                     </th>
                                 </tr>
                                 </thead>

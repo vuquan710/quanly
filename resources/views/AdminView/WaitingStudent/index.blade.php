@@ -46,7 +46,7 @@
                                     <th>Trình Độ</th>
                                     <th>Trạng Thái</th>
                                     <th>Ngày Đăng Ký</th>
-                                    <th width="7%">
+                                    <th width="8%">
                                     </th>
                                 </tr>
                                 </thead>

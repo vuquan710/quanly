@@ -38,7 +38,7 @@
                                 <tr>
                                     <th>STT</th>
                                     <th>Tên Lớp</th>
-                                    <th width="7%">
+                                    <th width="8%">
                                         <a style="width: 100%" href="{!! route('admin.class.create') !!}"
                                            class="btn btn-success btn-bold">
                                     <span>

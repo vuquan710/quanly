@@ -27,7 +27,7 @@
                                     <th>Quê Quán</th>
                                     <th>Bằng Cấp</th>
                                     <th>Cấp Bậc</th>
-                                    <th width="7%">
+                                    <th width="8%">
                                         <a style="width: 100%" href="{!! route('admin.employee.create') !!}"
                                            class="btn btn-success btn-bold">
                                     <span>

@@ -38,7 +38,7 @@
                                 <tr>
                                     <th>STT</th>
                                     <th>Khóa Học</th>
-                                    <th width="7%">
+                                    <th width="8%">
                                         <a style="width: 100%" href="{!! route('admin.course.create') !!}"
                                            class="btn btn-success btn-bold">
                                     <span>

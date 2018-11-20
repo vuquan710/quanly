@@ -47,7 +47,7 @@
                                     {{--<th>Trạng Thái</th>--}}
                                     <th>Thời Gian</th>
                                     <th>Ngày Phụ Đạo</th>
-                                    <th width="7%">
+                                    <th width="8%">
                                         <a style="width: 100%" href="{!! route('admin.student.tutoring.create') !!}"
                                            class="btn btn-success btn-bold">
                                     <span>

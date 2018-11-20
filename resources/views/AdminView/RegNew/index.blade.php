@@ -49,7 +49,7 @@
                                     <th>Trạng Thái</th>
                                     <th>Ngày Đăng Ký</th>
                                     <th>Ngày Kết Khóa</th>
-                                    <th width="7%">
+                                    <th width="8%">
                                         <a style="width: 100%" href="{!! route('admin.student.new.create') !!}"
                                            class="btn btn-success btn-bold">
                                     <span>

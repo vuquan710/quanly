@@ -32,7 +32,7 @@
                                     <th>Tên Lớp</th>
                                     <th>Ngày Kiểm Tra</th>
                                     <th>Thời Gian</th>
-                                    <th width="7%">
+                                    <th width="8%">
                                         <a style="width: 100%" href="{!! route('admin.student.test.create') !!}"
                                            class="btn btn-success btn-bold">
                                     <span>
