@@ -61,13 +61,24 @@
                                             <td>{{$dt->TenPH}}</td>
                                             <td>{{$dt->Sdt}}</td>
                                             <td>{{$dt->Fb}}</td>
-
                                             @if($dt->Cahoc == 1)
-                                                <td>9h30 - 11h00</td>
+                                                <td>17h30 - 19h00 (Thứ 3 - 5)</td>
                                             @elseif ($dt->Cahoc == 2)
-                                                <td>17h30 - 19h00</td>
+                                                <td>17h30 - 19h00 (Thứ 4 - 6)</td>
+                                            @elseif ($dt->Cahoc == 3)
+                                                <td>19h05 - 20h35 (Thứ 4- 6)</td>
+                                            @elseif ($dt->Cahoc == 4)
+                                                <td>19h05 - 20h35 (Thứ 3- 5)</td>
+                                            @elseif ($dt->Cahoc == 5)
+                                                <td>8h - 9h30 (Thứ 7 - CN)</td>
+                                            @elseif ($dt->Cahoc == 6)
+                                                <td>9h30 - 11h00 (Thứ 7 - CN)</td>
+                                            @elseif ($dt->Cahoc == 7)
+                                                <td>14h30 - 16h00 (Thứ 7 - CN)</td>
+                                            @elseif ($dt->Cahoc == 8)
+                                                <td>16h00 - 17h30 (Thứ 7 - CN)</td>
                                             @else
-                                                <td>19h05 - 20h35</td>
+                                                <td>17h30 - 19h00 (Thứ 7 - CN)</td>
                                             @endif
                                             <td>{{$dt->Khoahoc }} Tháng</td>
                                             <td>{{$dt->TenTD }}</td>

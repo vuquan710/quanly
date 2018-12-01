@@ -78,9 +78,15 @@
 
                         <div class="col-sm-9">
                             <select class="col-xs-10 col-sm-5" id="form-field-1" name="Cahoc">
-                                <option value="1">9h30 - 11h00</option>
-                                <option value="2">17h30 - 19h00</option>
-                                <option value="3">19h05 - 20h35</option>
+                                <option value="1">17h30 - 19h00 (Thứ 3 - 5)</option>
+                                <option value="2">17h30 - 19h00 (Thứ 4 - 6)</option>
+                                <option value="3">19h05 - 20h35 (Thứ 4- 6)</option>
+                                <option value="4">19h05 - 20h35 (Thứ 3- 5)</option>
+                                <option value="5">8h - 9h30 (Thứ 7 - CN)</option>
+                                <option value="6">9h30 - 11h00 (Thứ 7 - CN)</option>
+                                <option value="7">14h30 - 16h00 (Thứ 7 - CN)</option>
+                                <option value="8">16h00 - 17h30 (Thứ 7 - CN)</option>
+                                <option value="9">17h30 - 19h00 (Thứ 7 - CN)</option>
                             </select>
                         </div>
                     </div>

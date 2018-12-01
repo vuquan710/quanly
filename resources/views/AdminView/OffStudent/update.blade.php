@@ -90,11 +90,23 @@
                                 <div class="col-sm-9">
                                     <select class="col-xs-10 col-sm-5" id="form-field-1" name="Cahoc">
                                         @if(isset($dt->Cahoc))
-                                            <option value="1" {{$dt->Cahoc == 1 ? 'selected' : ''  }}>9h30 - 11h00
+                                            <option value="1" {{$dt->Cahoc == 1 ? 'selected' : ''  }}>17h30 - 19h00 (Thứ 3 - 5)
                                             </option>
-                                            <option value="2" {{$dt->Cahoc == 2 ? 'selected' : ''  }}>17h30 - 19h00
+                                            <option value="2" {{$dt->Cahoc == 2 ? 'selected' : ''  }}>17h30 - 19h00 (Thứ 4 - 6)
                                             </option>
-                                            <option value="3" {{$dt->Cahoc == 3 ? 'selected' : ''  }}>19h05 - 20h35
+                                            <option value="3" {{$dt->Cahoc == 3 ? 'selected' : ''  }}>19h05 - 20h35 (Thứ 4- 6)
+                                            </option>
+                                            <option value="4" {{$dt->Cahoc == 4 ? 'selected' : ''  }}>19h05 - 20h35 (Thứ 3- 5)
+                                            </option>
+                                            <option value="5" {{$dt->Cahoc == 5 ? 'selected' : ''  }}>8h - 9h30 (Thứ 7 - CN)
+                                            </option>
+                                            <option value="6" {{$dt->Cahoc == 6 ? 'selected' : ''  }}>9h30 - 11h00 (Thứ 7 - CN)
+                                            </option>
+                                            <option value="7" {{$dt->Cahoc == 7 ? 'selected' : ''  }}>14h30 - 16h00 (Thứ 7 - CN)
+                                            </option>
+                                            <option value="8" {{$dt->Cahoc == 8 ? 'selected' : ''  }}>16h00 - 17h30 (Thứ 7 - CN)
+                                            </option>
+                                            <option value="9" {{$dt->Cahoc == 9 ? 'selected' : ''  }}>17h30 - 19h00 (Thứ 7 - CN)
                                             </option>
                                         @endif
                                     </select>
